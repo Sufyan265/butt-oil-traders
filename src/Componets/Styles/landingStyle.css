@@ -1,0 +1,41 @@
+.landingSection {
+    background-color: #e7b1453b;
+    margin: 0 3%;
+}
+
+.landingContainer {
+    align-items: center;
+}
+
+.landingImage {
+    display: flex;
+    justify-content: center;
+}
+
+.landingImage img {
+    /* width: 35rem; */
+    max-width: 150%;
+    position: relative;
+    z-index: 1;
+}
+
+.landing-left {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.landingContent {
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.landing-left .headingStyle {
+    font-size: 3.2rem;
+}
+
+.landing-left .summary {
+    margin: 2rem 0;
+}
