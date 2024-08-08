@@ -1,4 +1,3 @@
-// Cart.jsx
 import React, { useContext } from 'react';
 import "./Styles/cartStyle.css";
 import 'bootstrap/dist/css/bootstrap.min.css';

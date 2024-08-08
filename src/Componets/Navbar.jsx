@@ -86,9 +86,9 @@ const Navbar = () => {
                     </div>
                 </nav>
             </header>
-            <a href="{whatsappLink}" className="whatsapp-icon" target="_blank" rel="noopener noreferrer">
+            {/* <a href="{whatsappLink}" className="whatsapp-icon" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-whatsapp"></i>
-            </a>
+            </a> */}
 
 
         </>

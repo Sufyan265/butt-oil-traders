@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import populerOilImg from '../../public/Images/populerOil.jpg';
+import ContextApi from '../Context/ContextApi';
 
 const PopularOil = () => {
+  const { handleNavClick } = useContext(ContextApi);
   return (
     <>
       <style>
@@ -46,7 +48,7 @@ const PopularOil = () => {
             <p className="description paragraphStyle">
               Discover ZIC's premium range of engine oils designed to enhance the performance and longevity of your vehicle's engine. Our collection includes high-quality oils that meet the latest industry standards, ensuring your car runs smoothly and efficiently. Experience superior protection and performance with ZIC's top-grade engine oils, trusted by millions of drivers worldwide.
             </p>
-            <a href="#" className="btn btn-dark btnStyle">Explore the Collection</a>
+            <button onClick={() => handleNavClick("productId", "/")} className="btn btn-dark btnStyle">Explore the Collection</button>
           </div>
         </div>
       </section>

@@ -2,11 +2,13 @@ import React, { useContext, useRef, useState } from 'react';
 import ContextApi from '../Context/ContextApi';
 // import emailjs from 'emailjs-com';
 import emailjs from '@emailjs/browser';
+import CardItem from './CardItem';
 
 const CheckOut = () => {
     const formRef = useRef();
 
     const { cartItems, totalItemsCount, totalPrice } = useContext(ContextApi);
+    const [result, setResult] = React.useState("Place Order");
 
     const [form, setForm] = useState({
         email: '',
@@ -17,7 +19,7 @@ const CheckOut = () => {
         address: '',
         apartment: '',
         city: '',
-        state: 'Punjab',
+        state: '',
         zip: '',
         phone: '',
         notes: '',
@@ -40,8 +42,26 @@ const CheckOut = () => {
         }));
     };
 
+    // const formatCartItems = (items) => {
+    //     return items.map(item => `
+    //         <div class="order-item">
+    //             <p><strong>Product:</strong> ${item.title}</p>
+    //             <p><strong>Description:</strong> ${item.desc}</p>
+    //             <p><strong>Quantity:</strong> ${item.quantity}</p>
+    //             <p><strong>Price:</strong> Rs. ${item.price}</p>
+    //         </div>
+    //     `).join('');
+    // };
+
+    // console.log(formatCartItems(cartItems))
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const formMessage = document.getElementById("order_message");
+        formMessage.style.color = "white";
+        setResult("Please Wait....");
+        formMessage.classList.remove('disabled');
 
         const templateParams = {
             email: form.email,
@@ -56,34 +76,56 @@ const CheckOut = () => {
             phone: form.phone,
             notes: form.notes,
             paymentMethod: form.paymentMethod,
-            cartItems: formatCartItems(cartItems), // Ensure this matches the template's expectation
+            cartItems: formatCartItems(cartItems),
             totalItemsCount: totalItemsCount,
             totalPrice: totalPrice
         };
 
         try {
             await emailjs.send('service_anuuuvq', 'template_xxwqqoi', templateParams, '2lKqSLcLTPyA1zKIN');
-            console.log('SUCCESS!');
+            formMessage.style.backgroundColor = "green";
+            setResult("Your Order has been placed Successfully!");
+            console.log('Order Successfully Placed!');
+            formMessage.classList.add('disabled');
         } catch (error) {
-            console.error('FAILED...', error);
+            console.error('FAILED... Order Place', error);
+            formMessage.style.color = "red";
+            setResult("Failed... ", error.message);
         }
+
+        setForm({
+            email: '',
+            firstName: '',
+            lastName: '',
+            // companyName: '',
+            country: 'PK',
+            address: '',
+            apartment: '',
+            city: '',
+            state: '',
+            zip: '',
+            phone: '',
+            notes: '',
+            paymentMethod: 'cash on delivery'
+        })
+
     };
 
 
-    const sendEmail = async (e) => {
-        e.preventDefault();
+    // const sendEmail = async (e) => {
+    //     e.preventDefault();
 
-        const templateParams = {
-            email: form.email,
-            message: 'Test message',
-        }
-        try {
-            await emailjs.send('service_anuuuvq', 'template_z0x4as3', templateParams, '2lKqSLcLTPyA1zKIN');
-            console.log('SUCCESS!');
-        } catch (error) {
-            console.error('FAILED...', error);
-        }
-    };
+    //     const templateParams = {
+    //         email: form.email,
+    //         message: 'Test message',
+    //     }
+    //     try {
+    //         await emailjs.send('service_anuuuvq', 'template_z0x4as3', templateParams, '2lKqSLcLTPyA1zKIN');
+    //         console.log('SUCCESS!');
+    //     } catch (error) {
+    //         console.error('FAILED...', error);
+    //     }
+    // };
 
     // function to add commas to a price 
     function formatPrice(price) {
@@ -165,7 +207,8 @@ const CheckOut = () => {
                                 <label className="form-check-label" htmlFor="cash">Cash on delivery</label>
                             </div>
                         </div>
-                        <button type="submit" className="btn btn-primary btn-lg w-100">Place Order</button>
+                        {/* <span id='form_message'>{result}</span> */}
+                        <button type="submit" id='order_message' className="btn btn-primary btn-lg w-100">{result}</button>
                     </form>
                 </div>
                 <div className="col-md-5">

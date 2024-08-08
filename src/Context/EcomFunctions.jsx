@@ -106,21 +106,21 @@ const EcomFunctions = (props) => {
     const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
 
     const navigate = useNavigate();
-    const handleNavClick = (sectionId) => {
-        if (location.pathname !== '/') {
-            navigate('/');
-            setTimeout(() => {
-                const element = document.getElementById(sectionId);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
-        } else {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+    const handleNavClick = async (sectionId, path = "/") => {
+        // if (location.pathname !== '/') {
+        await navigate(path);
+        // setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
         }
+        // }, 100);
+        // } else {
+        //     const element = document.getElementById(sectionId);
+        //     if (element) {
+        //         element.scrollIntoView({ behavior: 'smooth' });
+        //     }
+        // }
     };
 
     return (

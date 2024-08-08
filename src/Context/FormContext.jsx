@@ -11,9 +11,9 @@ export const FormProvider = (props) => {
     const formKey = "36eec34c-0474-4f97-bd44-9eed6448b274";
 
     const onSubmit = async (event) => {
+        event.preventDefault();
         const formMessage = document.getElementById("form_message");
         formMessage.style.color = "#1a1a1a";
-        event.preventDefault();
         setResult("Sending....");
         const formData = new FormData(event.target);
         formData.append("access_key", formKey);
