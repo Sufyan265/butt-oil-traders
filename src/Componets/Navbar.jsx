@@ -9,7 +9,7 @@ import ContextApi from '../Context/ContextApi';
 
 const Navbar = () => {
     const { totalItems } = useContext(ContextApi);
-    
+
     const tooltip = (
         <Tooltip id="tooltip-example">Cart</Tooltip>
     );
@@ -21,7 +21,7 @@ const Navbar = () => {
                     <div className="container">
                         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="navbar-brand">
                             {/* <a className="navbar-brand" href="#"> */}
-                                <img src={logo_t_sm} alt="logo" />
+                            <img src={logo_t_sm} alt="logo" />
                             {/* </a> */}
                             <span className="navbar-brand mx-auto brandName" href="#">Butt Oil Traders</span>
                         </Link>
@@ -34,6 +34,9 @@ const Navbar = () => {
                             <ul className="navbar-nav m-auto mb-2 mb-lg-0 navbarItems">
                                 <li className="nav-item">
                                     <Link to="/" className="nav-link">Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/shop" className="nav-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Shop</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/about" className="nav-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>

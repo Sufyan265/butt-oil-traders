@@ -22,8 +22,8 @@
 }
 
 .productImage {
-    height: 20rem;
-    /* max-height: 25rem; */
+    height: 15rem;
+    max-height: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;

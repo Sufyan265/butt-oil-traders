@@ -17,7 +17,7 @@ const CardItem = ({ card }) => {
                 <div className="productImage">
                     <img src={card.img} alt="Loading..." loading='lazy' />
                 </div>
-                <div className="productContent">
+                <div className="productContent mt-2">
                     <p className='paragraphStyle card-categorize'>{card.category}</p>
                     <h4 className='headingStyle'>{card.title}</h4>
                     <p className='paragraphStyle card-desc'>{card.desc}</p>

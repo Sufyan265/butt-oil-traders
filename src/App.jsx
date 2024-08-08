@@ -4,6 +4,7 @@ import Navbar from './Componets/Navbar'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EcomFunctions from "./Context/EcomFunctions"
 import { FormProvider } from "./Context/FormContext"
+import { DataProvider } from "./Context/DataContext"
 import Home from './Componets/Home';
 import About from './Componets/About';
 import Contact from './Componets/Contact';
@@ -12,6 +13,7 @@ import Footer from './Componets/Footer';
 import Cart from './Componets/Cart';
 import CheckOut from './Componets/CheckOut';
 import StructuredData from './StructuredData';
+import Shop from './Componets/Shop';
 
 
 function App() {
@@ -19,45 +21,51 @@ function App() {
   return (
     <>
       <Router>
-        <FormProvider>
-          <EcomFunctions>
-            <StructuredData />
-            <Navbar />
-            {/* <Home /> */}
+        <DataProvider>
+          <FormProvider>
+            <EcomFunctions>
+              <StructuredData />
+              <Navbar />
+              {/* <Home /> */}
 
-            <div className="allSections">
-              <Routes>
-                <Route exact path="/" element={
-                  <Home />
-                } />
+              <div className="allSections">
+                <Routes>
+                  <Route exact path="/" element={
+                    <Home />
+                  } />
 
-                <Route exact path="/cart" element={
-                  <Cart />
-                } />
+                  <Route exact path="/cart" element={
+                    <Cart />
+                  } />
 
-                <Route exact path="/checkout" element={
-                  <CheckOut />
-                } />
+                  <Route exact path="/checkout" element={
+                    <CheckOut />
+                  } />
 
-                <Route exact path="/about" element={
-                  <About />
-                } />
+                  <Route exact path="/shop" element={
+                    <Shop heading="Shop" subHeading="Explore Products" />
+                  } />
 
-                <Route exact path="/contact" element={
-                  <Contact />
-                } />
+                  <Route exact path="/about" element={
+                    <About />
+                  } />
 
-                <Route exact path="/refundpolicy" element={
-                  <RefundPolicy />
-                } />
+                  <Route exact path="/contact" element={
+                    <Contact />
+                  } />
 
-              </Routes>
-            </div>
+                  <Route exact path="/refundpolicy" element={
+                    <RefundPolicy />
+                  } />
 
-            <Footer />
+                </Routes>
+              </div>
 
-          </EcomFunctions>
-        </FormProvider>
+              <Footer />
+
+            </EcomFunctions>
+          </FormProvider>
+        </DataProvider>
       </Router>
     </>
   )

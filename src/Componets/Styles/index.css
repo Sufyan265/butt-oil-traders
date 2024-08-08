@@ -4,9 +4,11 @@ body {
     font-family: var(--primaryFontFamily);
     scroll-behavior: smooth;
 }
-.allSections {    
+
+.allSections {
     padding-top: 82px;
 }
+
 ::selection {
     background-color: var(--primaryColor);
     color: var(--lightText);
@@ -98,5 +100,11 @@ body {
     .landingImage img {
         width: 100%;
         right: 0;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .rowStyle .row>* {
+        width: 50%;
     }
 }

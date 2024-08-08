@@ -3,7 +3,6 @@ import { FormContext } from '../Context/FormContext';
 
 const Contact = () => {
     const { onSubmit, result, showPopup } = useContext(FormContext);
-
     return (
         <>
             <section className="py-5">
