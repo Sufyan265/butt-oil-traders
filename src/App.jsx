@@ -3,7 +3,7 @@ import './Componets/Styles/sectionStyle.css'
 import Navbar from './Componets/Navbar'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EcomFunctions from "./Context/EcomFunctions"
-import {FormProvider} from "./Context/FormContext"
+import { FormProvider } from "./Context/FormContext"
 import Home from './Componets/Home';
 import About from './Componets/About';
 import Contact from './Componets/Contact';
@@ -11,6 +11,7 @@ import RefundPolicy from './Componets/RefundPolicy';
 import Footer from './Componets/Footer';
 import Cart from './Componets/Cart';
 import CheckOut from './Componets/CheckOut';
+import StructuredData from './StructuredData';
 
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
   return (
     <>
       <Router>
-          <FormProvider>
-        <EcomFunctions>
+        <FormProvider>
+          <EcomFunctions>
+            <StructuredData />
             <Navbar />
             {/* <Home /> */}
 
@@ -54,8 +56,8 @@ function App() {
 
             <Footer />
 
-        </EcomFunctions>
-          </FormProvider>
+          </EcomFunctions>
+        </FormProvider>
       </Router>
     </>
   )
