@@ -9,7 +9,7 @@ import ContextApi from '../Context/ContextApi';
 
 const Navbar = () => {
     const { totalItems } = useContext(ContextApi);
-
+    
     const tooltip = (
         <Tooltip id="tooltip-example">Cart</Tooltip>
     );
@@ -19,10 +19,13 @@ const Navbar = () => {
             <header>
                 <nav className="navbar navbar-expand-lg fixed-top navbarStyle" data-bs-theme="light">
                     <div className="container">
-                        <a className="navbar-brand" href="#">
-                            <img src={logo_t_sm} alt="logo" />
-                        </a>
-                        <a className="navbar-brand d-lg-block mx-auto brandName" href="#">Butt Oil Traders</a>
+                        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="navbar-brand">
+                            {/* <a className="navbar-brand" href="#"> */}
+                                <img src={logo_t_sm} alt="logo" />
+                            {/* </a> */}
+                            <span className="navbar-brand mx-auto brandName" href="#">Butt Oil Traders</span>
+                        </Link>
+
 
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -45,7 +48,7 @@ const Navbar = () => {
 
 
                             <div className="userContainer">
-                                <Link to="/cart">
+                                <Link to="/cart" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                                     <OverlayTrigger placement="bottom" overlay={tooltip}>
                                         <button type="button" className="btn btn-outline-dark cart-btn">
                                             <FontAwesomeIcon icon={faShoppingCart} />

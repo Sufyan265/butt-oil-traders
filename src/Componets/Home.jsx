@@ -3,6 +3,7 @@ import LandingSection from './LandingSection';
 import Products from './Products';
 import PopularOil from './PopulerOil';
 import ContextApi from '../Context/ContextApi';
+import Team from './Team';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <PopularOil />
             {/* <Filters data={filtersData} heading="Car Filters" subHeading="Trending Now" /> */}
             <Products data={filtersData} heading="Car Filters" subHeading="Trending Now" />
+            <Team />
 
         </>
     )

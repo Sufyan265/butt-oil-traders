@@ -83,14 +83,14 @@ footer {
 
 .footer-bottom p {
     float: left;
-    font-size: 14px;
+    font-size: 0.8rem;
     word-spacing: 2px;
     text-transform: capitalize;
 }
 
 .footer-bottom p a {
     color: var(--primaryColor);
-    font-size: 16px;
+    /* font-size: 16px; */
     text-decoration: none;
     display: inline-block;
 }

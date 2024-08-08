@@ -4,7 +4,7 @@ import ContextApi from '../Context/ContextApi';
 const CardItem = ({ card }) => {
     const { addToCart } = useContext(ContextApi);
 
-    
+
     // function to add commas to a price 
     function formatPrice(price) {
         const number = typeof price === 'string' ? parseFloat(price) : price;
@@ -18,11 +18,11 @@ const CardItem = ({ card }) => {
                     <img src={card.img} alt="Loading..." loading='lazy' />
                 </div>
                 <div className="productContent">
-                    <p className='paragraphStyle card-categorize'>{card.categorize}</p>
+                    <p className='paragraphStyle card-categorize'>{card.category}</p>
                     <h4 className='headingStyle'>{card.title}</h4>
                     <p className='paragraphStyle card-desc'>{card.desc}</p>
                     <div className='priceStyle'>{`Rs. ${formatPrice(card.price)}`}<span>.00</span></div>
-                    <button className="btn btn-dark btnStyle" onClick={() => addToCart(card.id)}>Add to Cart</button>
+                    <button className="btn btn-dark btnStyle" onClick={(e) => { e.stopPropagation(); addToCart(card.id); }}>Add to Cart</button>
                 </div>
             </div>
         </>

@@ -5,19 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ContextApi from '../Context/ContextApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = () => {
-    const { cartItems, addToCart, removeItem, updateQuantity } = useContext(ContextApi);
-
-    // const updateQuantity = (id, quantity) => {
-    //     // Update quantity through context function if needed
-    //     addToCart(id, quantity);
-    // };
-
-
-
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+    const { cartItems, removeItem, updateQuantity, totalItemsCount, totalPrice } = useContext(ContextApi);
 
     return (
         <>
@@ -48,7 +39,7 @@ const ShoppingCart = () => {
                                             className="quantity-input form-control"
                                             value={item.quantity}
                                             min="1"
-                                             onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                                            onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
                                         />
                                         <span className="price text-muted mt-2 d-block">Rs. {(item.price * item.quantity).toFixed(2)}</span>
                                         {/* <button className="btn btn-danger mt-2" onClick={() => removeItem(item.id)}>Remove</button> */}
@@ -62,9 +53,11 @@ const ShoppingCart = () => {
                     <div className="col-md-4">
                         <div className="cart-summary">
                             <h4>Order Summary</h4>
-                            <p className="text-muted">Total Items: {totalItems}</p>
+                            <p className="text-muted">Total Items: {totalItemsCount}</p>
                             <h5>Total: Rs. {totalPrice}</h5>
-                            <button className="btn btn-primary btn-block mt-3">Proceed to Checkout</button>
+                            <Link to="/checkout" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                                <button className="btn btn-dark btn-block mt-3" disabled={cartItems.length === 0}>Proceed to Checkout</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

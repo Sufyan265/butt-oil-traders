@@ -6,11 +6,13 @@
     --lightText: #fff;
     --darkText: #202124;
     --primaryFontFamily: "Poppins", sans-serif;
+    --boxShadowColor: #e8b3484c;
 }
 
 /* Navbar Style ↓ */
 .navbarStyle {
     background-color: var(--lightText);
+    box-shadow: 0px 0px 15px #00000021;
 }
 
 .navbar-brand {

@@ -4,12 +4,12 @@
 } */
 
 .cartPage .cart-header {
-    margin-top: 30px;
     text-align: center;
-    padding: 20px;
+    padding: 1.5rem;
     background-color: #343a40;
     color: white;
     border-radius: 8px;
+    margin: 2.5rem 1rem 0;
 }
 
 .cartPage .cart-item {
@@ -28,7 +28,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: sticky;
-    top: 20px;
+    top: 80px;
 }
 
 .cartPage .cart-summary h4 {

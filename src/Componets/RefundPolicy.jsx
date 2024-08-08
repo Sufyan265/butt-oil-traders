@@ -28,7 +28,7 @@ const RefundPolicy = () => {
                     <h2 className="mt-5 text-dark">Refund Process</h2>
                     <p className="text-muted">To initiate a refund, please follow these steps:</p>
                     <ol className="text-muted mx-auto" style={{ maxWidth: '600px' }}>
-                        <li>Contact our customer support team at <a href="mailto:support@buttoiltraders.com" className="text-primary">support@buttoiltraders.com</a> within 30 days of your purchase.</li>
+                        <li>Contact our customer support team at <a href="mailto:faizanbinnaeem@gmail.com" className="text-primary">faizanbinnaeem@gmail.com</a> within 30 days of your purchase.</li>
                         <li>Provide your order number, details of the product, and the reason for the refund request.</li>
                         <li>Our team will review your request and provide instructions on how to return the item.</li>
                     </ol>
@@ -52,16 +52,16 @@ const RefundPolicy = () => {
                         <li>Check your bank account again.</li>
                         <li>Contact your credit card company; it may take some time before your refund is officially posted.</li>
                         <li>Contact your bank. There is often some processing time before a refund is posted.</li>
-                        <li>If you’ve done all of this and still have not received your refund, please contact us at <a href="mailto:support@buttoiltraders.com" className="text-primary">support@buttoiltraders.com</a>.</li>
+                        <li>If you’ve done all of this and still have not received your refund, please contact us at <a href="mailto:faizanbinnaeem@gmail.com" className="text-primary">faizanbinnaeem@gmail.com</a>.</li>
                     </ol>
 
                     <h2 className="mt-5 text-dark">Exchanges</h2>
-                    <p className="text-muted">We only replace items if they are defective or damaged. If you need to exchange it for the same item, contact us at <a href="mailto:support@buttoiltraders.com" className="text-primary">support@buttoiltraders.com</a> and follow the return instructions provided.</p>
+                    <p className="text-muted">We only replace items if they are defective or damaged. If you need to exchange it for the same item, contact us at <a href="mailto:faizanbinnaeem@gmail.com" className="text-primary">faizanbinnaeem@gmail.com</a> and follow the return instructions provided.</p>
 
                     <h2 className="mt-5 text-dark">Contact Us</h2>
                     <p className="text-muted">If you have any questions about our refund policy, please contact us:</p>
                     <ul className="text-muted mx-auto" style={{ maxWidth: '600px' }}>
-                        {/* <li><strong>Email:</strong> <a href="mailto:support@buttoiltraders.com" className="text-primary">support@buttoiltraders.com</a></li>
+                        {/* <li><strong>Email:</strong> <a href="mailto:faizanbinnaeem@gmail.com" className="text-primary">faizanbinnaeem@gmail.com</a></li>
                         <li><strong>Phone:</strong> +1 (123) 456-7890</li> */}
 
                         <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>

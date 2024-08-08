@@ -14,7 +14,8 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className="footer-bottom">
-                    <p>copyright &copy; <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="nav-link">Butt Oil Traders</Link></p>
+                    <p className='copyright'>copyright &copy; <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="nav-link">Butt Oil Traders </Link> | Designed by <a href="https://sufyan.me/" target="_blank" rel="noreferrer">Muhammad Sufyan</a>
+                    </p>
 
                     <div className="footer-menu">
                         <ul className="f-menu">

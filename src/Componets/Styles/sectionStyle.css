@@ -1,0 +1,179 @@
+/* custom-styles.css */
+.custom-modal {
+    min-width: 70vw;
+    max-width: 70vw;
+    height: 80vh;
+}
+
+.custom-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.custom-modal .modal-image {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.custom-modal .modal-image img {
+    width: 100%;
+    height: auto;
+}
+
+.custom-modal .modal-details {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.contact-info h5,
+.custom-modal .contact-info p {
+    margin: 5px 0;
+}
+
+.custom-modal .quantity-control {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.custom-modal .quantity-control button {
+    border: none;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.custom-modal .quantity-control input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+
+@media (max-width: 768px) {
+    .custom-modal {
+        min-width: 90vw;
+        max-width: 90vw;
+        height: 90vh;
+    }
+
+    .custom-modal .modal-content {
+        flex-direction: column;
+    }
+
+    .custom-modal .modal-image {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .custom-modal .modal-details {
+        padding-left: 0;
+    }
+}
+
+
+
+
+
+
+
+
+/* .checkOutSection body {
+    background-color: #f4f4f4;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  } */
+  
+  .checkOutSection .container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.05);
+  }
+  
+  .checkOutSection h4 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .checkOutSection .form-control, .form-select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px; /* Spacing between form elements */
+  }
+  
+  .checkOutSection .btn-primary {
+    background-color: var(--primaryColor);
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkOutSection .btn-primary:hover {
+    background-color: var(--primaryColor);
+  }
+  
+  /* .checkOutSection .form-check-input:checked {
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
+  } */
+  
+  .checkOutSection .form-check-label {
+    margin-left: 0.5rem;
+  }
+  
+  .checkOutSection .list-group-item {
+    background-color: transparent;
+    border: none;
+    padding-bottom: 10px; /* Reduce spacing */
+  }
+  
+  .checkOutSection .list-group-item:last-child {
+    border-bottom: 1px solid #dee2e6;
+  }
+  .checkout_summary {
+    position: sticky;
+    top: 90px;
+  }
+
+
+
+
+
+
+/* Contact Style */
+#form_message {
+    margin-left: 10px;
+}
+
+.dull_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Adjust opacity as needed */
+    z-index: 999;
+    /* Ensure it is behind the popup but in front of other content */
+    transition: all 0.3s ease;
+}
+
+.formPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: var(--darkText);
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: inherit;
+    max-width: 400px;
+    transition: all 0.3s ease;
+}
