@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Styles/App.css"
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo_t_sm from '../../public/Images/logo-transparent-sm.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,7 @@ import ContextApi from '../Context/ContextApi';
 
 const Navbar = () => {
     const { totalItems } = useContext(ContextApi);
+    let location = useLocation();
 
     const tooltip = (
         <Tooltip id="tooltip-example">Cart</Tooltip>
@@ -19,11 +20,12 @@ const Navbar = () => {
             <header>
                 <nav className="navbar navbar-expand-lg fixed-top navbarStyle" data-bs-theme="light">
                     <div className="container">
-                        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="navbar-brand">
+                        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="navbar-brand mx-auto brandName">
                             {/* <a className="navbar-brand" href="#"> */}
                             <img src={logo_t_sm} alt="logo" />
                             {/* </a> */}
-                            <span className="navbar-brand mx-auto brandName" href="#">Butt Oil Traders</span>
+                            {/* <span className="navbar-brand ">Butt Oil Traders</span> */}
+                            Butt Oil Traders
                         </Link>
 
 
@@ -33,19 +35,19 @@ const Navbar = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav m-auto mb-2 mb-lg-0 navbarItems">
                                 <li className="nav-item">
-                                    <Link to="/" className="nav-link">Home</Link>
+                                    <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/shop" className="nav-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Shop</Link>
+                                    <Link to="/shop" className={`nav-link ${location.pathname === '/shop' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Shop</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/about" className="nav-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>
+                                    <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/contact" className="nav-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Contact Us</Link>
+                                    <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Contact Us</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/refundpolicy" className="nav-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Refund Policy</Link>
+                                    <Link to="/refundpolicy" className={`nav-link ${location.pathname === '/refundpolicy' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Refund Policy</Link>
                                 </li>
                             </ul>
 
