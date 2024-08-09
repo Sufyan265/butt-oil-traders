@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <Router basename="/">
+      <Router basename="/butt-oil-traders">
         <DataProvider>
           <FormProvider>
             <EcomFunctions>
