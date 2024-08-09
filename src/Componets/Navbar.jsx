@@ -11,6 +11,9 @@ const Navbar = () => {
     const { totalItems } = useContext(ContextApi);
     let location = useLocation();
 
+
+    const isAdmin = localStorage.getItem('isAdmin');
+
     const tooltip = (
         <Tooltip id="tooltip-example">Cart</Tooltip>
     );
@@ -52,7 +55,7 @@ const Navbar = () => {
                             </ul>
 
 
-                            <div className="userContainer">
+                            <div className="userContainer d-flex flex-row align-items-center ">
                                 <Link to="/cart" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                                     <OverlayTrigger placement="bottom" overlay={tooltip}>
                                         <button type="button" className="btn btn-outline-dark cart-btn">
@@ -62,6 +65,11 @@ const Navbar = () => {
                                     </OverlayTrigger>
                                 </Link>
 
+
+
+                                    <Link to={!isAdmin ? "/adminlogin" : "/admin"} className="nav-link profileIcon" role="button">
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </Link>
 
                                 {/* <ul className="navbar-nav mb-2 mb-lg-0 profileIcon">
                                     <li className="nav-item dropdown">

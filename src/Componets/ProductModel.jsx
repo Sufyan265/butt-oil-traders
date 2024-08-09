@@ -23,7 +23,7 @@ const ProductModal = ({ show, handleClose, product }) => {
     }
 
     return (
-        <Modal show={show} onHide={handleClose} dialogClassName="custom-modal">
+        <Modal show={show} onHide={handleClose} dialogClassName="m-auto custom-modal">
             <Modal.Header closeButton>
                 <Modal.Title className='w-100 text-center'>{product.title}</Modal.Title>
             </Modal.Header>

@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const DataContext = createContext();
 
@@ -18,6 +18,7 @@ export const DataProvider = (props) => {
         acc[imageName] = images[path].default || images[path];
         return acc;
     }, {});
+
 
 
     const bestSellingData = [
@@ -42,7 +43,7 @@ export const DataProvider = (props) => {
         { id: 16, img: imagePaths['filterProduct1.png'], title: "AC Filters", desc: "Our high-efficiency AC Filters improve air quality inside your vehicle by trapping dust, pollen, and other pollutants. These filters ensure a healthier and more comfortable ride for you and your passengers, making every journey more enjoyable.", category: "AC Filters", price: 5600 },
     ];
 
-    const shopData = [
+    const shopDataObj = [
         ...bestSellingData,
         ...filtersData,
         { id: 17, img: imagePaths['filterProduct1.png'], title: "New Oil Filter", desc: "Our Oil Filters ensure clean, contaminant-free oil flow, protecting your engine and enhancing performance. These filters are designed for maximum efficiency and longevity, making them an essential component for any vehicle.", category: "Oil Filters", price: 5600 },
@@ -50,12 +51,14 @@ export const DataProvider = (props) => {
     ];
 
 
+    const [shopData, setShopData] = useState(shopDataObj);
 
     return (
         <DataContext.Provider value={{
             bestSellingData,
             filtersData,
             shopData,
+            setShopData,
 
 
         }}>

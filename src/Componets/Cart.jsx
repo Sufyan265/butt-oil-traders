@@ -25,7 +25,7 @@ const ShoppingCart = () => {
                         ) : (
                             cartItems.map(item => (
                                 <div className="cart-item row" key={item.id} data-price={item.price}>
-                                    <div className="col-3">
+                                    <div className="col-3 d-flex justify-content-center">
                                         <img src={item.img} alt="Product" className="img-fluid" />
                                     </div>
                                     <div className="col-6">

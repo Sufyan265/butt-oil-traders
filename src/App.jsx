@@ -15,6 +15,9 @@ import CheckOut from './Componets/CheckOut';
 import StructuredData from './StructuredData';
 import Shop from './Componets/Shop';
 import NotFound from './Componets/NotFound';
+import PrivateRoute from '../routes/PrivateRoute';
+import AdminPage from './Componets/Admin/AdminPage';
+import AdminLogin from './Componets/Admin/AdminLogin';
 
 
 function App() {
@@ -58,6 +61,17 @@ function App() {
                   <Route exact path="/refundpolicy" element={
                     <RefundPolicy />
                   } />
+
+
+                  <Route path="/adminlogin" element={<AdminLogin />} />
+                  <Route
+                    path="/admin"
+                    element={
+                      <PrivateRoute>
+                        <AdminPage />
+                      </PrivateRoute>
+                    }
+                  />
 
                   <Route path="*" element={<NotFound />} />
                 </Routes>

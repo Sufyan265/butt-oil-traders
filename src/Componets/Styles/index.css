@@ -66,6 +66,7 @@ body {
     box-shadow: 0 0 0 .25rem var(--boxShadowColor) !important;
 }
 
+.loginBtn {}
 
 
 
@@ -106,5 +107,9 @@ body {
 @media only screen and (max-width: 575px) {
     .rowStyle .row>* {
         width: 50%;
+    }
+    .custom-modal {
+        min-width: 95vw;
+        max-width: 95vw;
     }
 }
