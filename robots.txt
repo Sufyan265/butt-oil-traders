@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /checkout
+
+Allow: /
+
+Sitemap: https://yourwebsite.com/sitemap.xml
