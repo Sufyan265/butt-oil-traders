@@ -14,6 +14,7 @@ import Cart from './Componets/Cart';
 import CheckOut from './Componets/CheckOut';
 import StructuredData from './StructuredData';
 import Shop from './Componets/Shop';
+import NotFound from './Componets/NotFound';
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
                     <RefundPolicy />
                   } />
 
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>
 
