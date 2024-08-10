@@ -3,4 +3,4 @@ Disallow: /checkout
 
 Allow: /
 
-Sitemap: https://yourwebsite.com/sitemap.xml
+Sitemap: https://Buttoiltraders.com/sitemap.xml
