@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import ContextApi from '../Context/ContextApi';
 
 const ProductModal = ({ show, handleClose, product }) => {
@@ -23,7 +23,7 @@ const ProductModal = ({ show, handleClose, product }) => {
     }
 
     return (
-        <Modal show={show} onHide={handleClose} dialogClassName="m-auto custom-modal">
+        <Modal show={show} onHide={handleClose} dialogClassName="m-auto custom-modal h-100" centered>
             <Modal.Header closeButton>
                 <Modal.Title className='w-100 text-center'>{product.title}</Modal.Title>
             </Modal.Header>

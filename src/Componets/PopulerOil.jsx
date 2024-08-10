@@ -12,7 +12,6 @@ const PopularOil = () => {
                     background-color: #fff;
                     padding: 2rem;
                     border-radius: 0.5rem;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                   }
 
                   .popular-oil-section .category {

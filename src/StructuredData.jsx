@@ -6,14 +6,14 @@ const StructuredData = () => {
         "@type": "Store",
         "name": "Butt Oil Traders",
         "description": "Butt Oil Traders is your go-to store for high-quality car engine oils and filters. We offer a wide range of automotive products including engine oils, gear oils, and more, ensuring the best performance for your vehicles.",
-        "image": "https://yourwebsite.com/Images/layout.png",
+        "image": "https://Buttoiltraders.com/Images/layout.png",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Lahore",
             "addressRegion": "Punjab",
             "addressCountry": "Pakitstan"
         },
-        "url": "https://yourwebsite.com",
+        "url": "https://Buttoiltraders.com",
         "telephone": "+923134633066",
         "openingHours": "Mo-Fr 09:00-18:00",
         "sameAs": [
@@ -22,7 +22,7 @@ const StructuredData = () => {
         ],
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://yourwebsite.com/search?query={search_term_string}",
+            "target": "https://Buttoiltraders.com/search?query={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     };

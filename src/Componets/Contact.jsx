@@ -48,7 +48,7 @@ const Contact = () => {
                                 </div>
                                 <div className="col-md-4 w-100">
                                     {/* <div className="d-grid"> */}
-                                    <button type="submit" className="btn btn-dark submitBtn" style={{ backgroundColor: "--var(primaryColor)" }}>Send message</button>
+                                    <button type="submit" className="btn btn-dark btnStyle submitBtn" style={{ backgroundColor: "--var(primaryColor)" }}>Send message</button>
                                     <span id='form_message'>{result}</span>
                                     {/* </div> */}
                                 </div>

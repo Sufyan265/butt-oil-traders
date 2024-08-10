@@ -13,7 +13,7 @@ const routes = [
 
 // Function to generate XML content
 function generateSitemap(routes) {
-  const baseUrl = 'https://yourwebsite.com'; // Replace with your actual domain
+  const baseUrl = 'https://Buttoiltraders.com'; // Replace with your actual domain
 
   const xmlEntries = routes.map(route => (
     `<url>
