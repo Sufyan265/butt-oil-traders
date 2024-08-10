@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
 
 const AdminLogin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    const adminUsername = import.meta.env.VITE_ADMIN_USERNAME;
+    const adminPasswordHash = import.meta.env.VITE_ADMIN_PASSWORD_HASH;
+
+    const hashPassword = (password) => {
+        return CryptoJS.SHA256(password).toString();
+    };
+
     const handleLogin = (e) => {
         e.preventDefault();
-        if (username === 'admin' && password === 'admin') {
+        const hashedPassword = hashPassword(password);
+
+        if (username === adminUsername && hashedPassword === adminPasswordHash) {
+            const encryptedUsername = CryptoJS.AES.encrypt(username, 'secret-key').toString();
+            const encryptedPassword = CryptoJS.AES.encrypt(hashedPassword, 'secret-key').toString();
+
             localStorage.setItem('isAdmin', true);
+            localStorage.setItem('adminUsername', encryptedUsername);
+            localStorage.setItem('adminPassword', encryptedPassword);
+
             navigate('/admin');
         } else {
             alert('Invalid credentials');
@@ -47,7 +63,7 @@ const AdminLogin = () => {
                             autoComplete="current-password"
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary w-100">Login</button>
+                    <button type="submit" className="btn btn-dark w-100 btnStyle">Login</button>
                 </form>
             </div>
         </div>

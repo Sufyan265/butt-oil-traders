@@ -3,13 +3,15 @@ import { Form, Button, Card, Col, Row, Modal, Alert } from 'react-bootstrap';
 import { DataContext } from '../../Context/DataContext';
 import '../Styles/adminStyle.css';
 import { useNavigate } from 'react-router-dom';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initialProduct = { id: '', img: '', title: '', desc: '', category: '', price: '' };
 
 const AdminPage = () => {
     const { shopData, setShopData } = useContext(DataContext); // Use Context API
     const [product, setProduct] = useState(initialProduct);
-    const [products, setProducts] = useState(shopData || []);
+    // const [products, setProducts] = useState(shopData || []);
     const [imagePreview, setImagePreview] = useState('');
     const [error, setError] = useState('');
     const [showModal, setShowModal] = useState(false);
@@ -21,9 +23,9 @@ const AdminPage = () => {
         navigate('/adminlogin');
     };
 
-    useEffect(() => {
-        setProducts(shopData);
-    }, [shopData]);
+    // useEffect(() => {
+    //     setShopData(shopData);
+    // }, [shopData]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -44,9 +46,12 @@ const AdminPage = () => {
 
     const handleAddProduct = (e) => {
         e.preventDefault();
-        const existingProduct = products.find((p) => p.id === product.id);
 
-        if (existingProduct) {
+        // Check if the product ID already exists only if it's a new product
+        const isEditing = product.id && shopData.some((p) => p.id === product.id);
+        const existingProduct = shopData.find((p) => p.id === product.id);
+
+        if (!isEditing && existingProduct) {
             if (product.id === existingProduct.id) {
                 setError('Product ID already exists. Please use a different ID.');
                 return;
@@ -55,10 +60,10 @@ const AdminPage = () => {
 
         if (product.id && product.title && product.price) {
             const updatedProducts = existingProduct
-                ? products.map((p) => (p.id === product.id ? product : p))
-                : [...products, product];
+                ? shopData.map((p) => (p.id === product.id ? product : p))
+                : [...shopData, product];
 
-            setProducts(updatedProducts);
+            // setShopData(updatedProducts);
             setShopData(updatedProducts); // Update Context API
             setProduct(initialProduct);
             setImagePreview('');
@@ -68,7 +73,7 @@ const AdminPage = () => {
     };
 
     const handleEditProduct = (id) => {
-        const prod = products.find((p) => p.id === id);
+        const prod = shopData.find((p) => p.id === id);
         setProduct(prod);
         setImagePreview(prod.img);
         setError('');
@@ -76,8 +81,8 @@ const AdminPage = () => {
     };
 
     const handleRemoveProduct = (id) => {
-        const updatedProducts = products.filter((p) => p.id !== id);
-        setProducts(updatedProducts);
+        const updatedProducts = shopData.filter((p) => p.id !== id);
+        // setShopData(updatedProducts);
         setShopData(updatedProducts); // Update Context API
     };
 
@@ -99,25 +104,30 @@ const AdminPage = () => {
         <div className="container mt-5">
             <div className="w-100 d-flex justify-content-between mb-4 align-items-center">
                 <h1>Admin Dashboard</h1>
-                <Button variant="dark" onClick={handleLogout}>Logout →</Button>
+                <Button variant="outline-dark" onClick={handleLogout}>Logout →</Button>
             </div>
 
-            <Button variant="primary" className="mb-4" onClick={handleShowModal}>
+            <Button variant="dark" className="mb-4 btnStyle" onClick={handleShowModal}>
                 Add New Product
             </Button>
 
             <Row>
-                {products.length > 0 ? (
-                    products.map((p) => (
+                {shopData.length > 0 ? (
+                    shopData.map((p) => (
                         <Col key={p.id} md={4} sm={6} xs={12} className="mb-4">
                             <Card>
                                 <Card.Body>
+                                    <div className="w-100 d-flex justify-content-end">
+                                        <FontAwesomeIcon icon={faPenToSquare} className='mx-2 crudIconStyle' onClick={() => handleEditProduct(p.id)} />
+                                        <FontAwesomeIcon icon={faTrashCan} className='mx-2 trashStyle' onClick={() => handleRemoveProduct(p.id)} />
+                                    </div>
+
                                     <Card.Title>{p.title}</Card.Title>
                                     <Card.Text>
                                         <strong>Category:</strong> {p.category}
                                     </Card.Text>
                                     <Card.Text className='paragraphStyle card-desc'>
-                                        <strong style={{color: "black"}}>Description: </strong>{p.desc}
+                                        <strong style={{ color: "black" }}>Description: </strong>{p.desc}
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Price:</strong> Rs. {p.price}
@@ -129,7 +139,7 @@ const AdminPage = () => {
                                             style={{ maxWidth: '10rem', maxHeight: '10rem' }}
                                         />
                                     )}
-                                    <Button
+                                    {/* <Button
                                         variant="warning"
                                         onClick={() => handleEditProduct(p.id)}
                                         className="mt-2"
@@ -142,7 +152,7 @@ const AdminPage = () => {
                                         className="mt-2 ms-2"
                                     >
                                         Remove
-                                    </Button>
+                                    </Button> */}
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -152,7 +162,7 @@ const AdminPage = () => {
                 )}
             </Row>
 
-            <Modal show={showModal} onHide={handleCloseModal} dialogClassName="m-auto custom-modal">
+            <Modal show={showModal} onHide={handleCloseModal} dialogClassName="m-auto custom-modal my-2">
                 <Modal.Header closeButton>
                     <Modal.Title>{product.id ? 'Edit Product' : 'Add New Product'}</Modal.Title>
                 </Modal.Header>
@@ -176,6 +186,7 @@ const AdminPage = () => {
                                 type="file"
                                 accept="image/*"
                                 onChange={handleImageChange}
+                                required
                             />
                             {imagePreview && (
                                 <img
@@ -204,6 +215,7 @@ const AdminPage = () => {
                                 value={product.desc}
                                 onChange={handleInputChange}
                                 placeholder="Product Description"
+                                required
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -214,6 +226,7 @@ const AdminPage = () => {
                                 value={product.category}
                                 onChange={handleInputChange}
                                 placeholder="Product Category"
+                                required
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -227,7 +240,7 @@ const AdminPage = () => {
                                 required
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button variant="dark" type="submit" className='btnStyle'>
                             {product.id ? 'Update Product' : 'Add Product'}
                         </Button>
                     </Form>

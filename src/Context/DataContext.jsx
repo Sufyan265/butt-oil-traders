@@ -46,12 +46,26 @@ export const DataProvider = (props) => {
     const shopDataObj = [
         ...bestSellingData,
         ...filtersData,
-        { id: 17, img: imagePaths['filterProduct1.png'], title: "New Oil Filter", desc: "Our Oil Filters ensure clean, contaminant-free oil flow, protecting your engine and enhancing performance. These filters are designed for maximum efficiency and longevity, making them an essential component for any vehicle.", category: "Oil Filters", price: 5600 },
-        { id: 18, img: imagePaths['filterProduct1.png'], title: "New Diesel Filter", desc: "Our Diesel Filters ensure clean, contaminant-free diesel flow, protecting your engine and enhancing performance. These filters are designed for maximum efficiency and longevity, making them an essential component for any vehicle.", category: "Diesel Filters", price: 5600 },
+        {
+            id: 17,
+            img: imagePaths['filterProduct1.png'],
+            title: "New Oil Filter",
+            desc: "Our Oil Filters ensure clean, contaminant-free oil flow, protecting your engine and enhancing performance. These filters are designed for maximum efficiency and longevity, making them an essential component for any vehicle.",
+            category: "Oil Filters",
+            price: 5600
+        },
+        {
+            id: 18,
+            img: imagePaths['filterProduct1.png'],
+            title: "New Diesel Filter",
+            desc: "Our Diesel Filters ensure clean, contaminant-free diesel flow, protecting your engine and enhancing performance. These filters are designed for maximum efficiency and longevity, making them an essential component for any vehicle.",
+            category: "Diesel Filters",
+            price: 5600
+        },
     ];
 
 
-    const [shopData, setShopData] = useState(shopDataObj);
+    const [shopData, setShopData] = useState(shopDataObj || []);
 
     return (
         <DataContext.Provider value={{

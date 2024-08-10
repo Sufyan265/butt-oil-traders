@@ -9,8 +9,8 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets'
   },
-  server: {
-    host: true, // Use 0.0.0.0 to listen on all IP addresses
-    port: 5173, // or any other port you prefer
-  },
+  // server: {
+  //   host: true, // Use 0.0.0.0 to listen on all IP addresses
+  //   port: 5173, // or any other port you prefer
+  // },
 })
