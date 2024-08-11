@@ -21,8 +21,8 @@ const AdminPage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('isAdmin');
-        localStorage.removeItem('adminUsername', encryptedUsername);
-        localStorage.removeItem('adminPassword', encryptedPassword);
+        localStorage.removeItem('adminUsername');
+        localStorage.removeItem('adminPassword');
         navigate('/adminlogin');
     };
 

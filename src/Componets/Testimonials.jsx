@@ -41,6 +41,7 @@ const Testimonials = () => {
                                 height="96"
                                 src={testimonial.image}
                                 width="96"
+                                loading="lazy"
                             />
                             <div className="bg-light p-3 p-md-5">
                                 <div className="mb-1" style={{ color: "var(--primaryColor)" }}>
