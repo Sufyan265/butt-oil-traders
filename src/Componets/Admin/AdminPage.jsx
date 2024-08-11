@@ -5,6 +5,7 @@ import '../Styles/adminStyle.css';
 import { useNavigate } from 'react-router-dom';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CardItem from '../CardItem';
 
 const initialProduct = { id: '', img: '', title: '', desc: '', category: '', price: '' };
 
@@ -20,6 +21,8 @@ const AdminPage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('isAdmin');
+        localStorage.removeItem('adminUsername', encryptedUsername);
+        localStorage.removeItem('adminPassword', encryptedPassword);
         navigate('/adminlogin');
     };
 
@@ -51,7 +54,7 @@ const AdminPage = () => {
         const isEditing = product.id && shopData.some((p) => p.id === product.id);
         const existingProduct = shopData.find((p) => p.id === product.id);
 
-        if (!isEditing && existingProduct) {
+        if (existingProduct) {
             if (product.id === existingProduct.id) {
                 setError('Product ID already exists. Please use a different ID.');
                 return;
@@ -113,8 +116,9 @@ const AdminPage = () => {
 
             <Row>
                 {shopData.length > 0 ? (
-                    shopData.map((p) => (
-                        <Col key={p.id} md={4} sm={6} xs={12} className="mb-4">
+                    // <>
+                        shopData.map((p) => (
+                        <Col key={p.id} lg={3} md={4} sm={6} xs={12} className="mb-4">
                             <Card>
                                 <Card.Body>
                                     <div className="w-100 d-flex justify-content-end">
@@ -139,24 +143,10 @@ const AdminPage = () => {
                                             style={{ maxWidth: '10rem', maxHeight: '10rem' }}
                                         />
                                     )}
-                                    {/* <Button
-                                        variant="warning"
-                                        onClick={() => handleEditProduct(p.id)}
-                                        className="mt-2"
-                                    >
-                                        Edit
-                                    </Button>
-                                    <Button
-                                        variant="danger"
-                                        onClick={() => handleRemoveProduct(p.id)}
-                                        className="mt-2 ms-2"
-                                    >
-                                        Remove
-                                    </Button> */}
                                 </Card.Body>
                             </Card>
                         </Col>
-                    ))
+                        ))
                 ) : (
                     <p>No products available</p>
                 )}

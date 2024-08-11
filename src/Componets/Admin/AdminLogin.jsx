@@ -28,7 +28,7 @@ const AdminLogin = () => {
 
             navigate('/admin');
         } else {
-            alert('Invalid credentials');
+            alert('Invalid credentials')
         }
     };
 

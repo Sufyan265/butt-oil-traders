@@ -4,6 +4,7 @@ import Products from './Products';
 import PopularOil from './PopulerOil';
 import ContextApi from '../Context/ContextApi';
 import Team from './Team';
+import Testimonials from './Testimonials';
 
 
 const Home = () => {
@@ -15,8 +16,8 @@ const Home = () => {
             <PopularOil />
             {/* <Filters data={filtersData} heading="Car Filters" subHeading="Trending Now" /> */}
             <Products data={filtersData} heading="Car Filters" subHeading="Trending Now" />
+            <Testimonials />
             <Team />
-
         </>
     )
 }

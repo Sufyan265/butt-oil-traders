@@ -2,7 +2,6 @@ import React, { useContext, useRef, useState } from 'react';
 import ContextApi from '../Context/ContextApi';
 // import emailjs from 'emailjs-com';
 import emailjs from '@emailjs/browser';
-import CardItem from './CardItem';
 
 const CheckOut = () => {
     const formRef = useRef();
@@ -19,7 +18,7 @@ const CheckOut = () => {
         address: '',
         apartment: '',
         city: '',
-        state: '',
+        state: 'Punjab',
         zip: '',
         phone: '',
         notes: '',
@@ -41,19 +40,6 @@ const CheckOut = () => {
             price: item.price
         }));
     };
-
-    // const formatCartItems = (items) => {
-    //     return items.map(item => `
-    //         <div class="order-item">
-    //             <p><strong>Product:</strong> ${item.title}</p>
-    //             <p><strong>Description:</strong> ${item.desc}</p>
-    //             <p><strong>Quantity:</strong> ${item.quantity}</p>
-    //             <p><strong>Price:</strong> Rs. ${item.price}</p>
-    //         </div>
-    //     `).join('');
-    // };
-
-    // console.log(formatCartItems(cartItems))
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -85,8 +71,8 @@ const CheckOut = () => {
             await emailjs.send('service_anuuuvq', 'template_xxwqqoi', templateParams, '2lKqSLcLTPyA1zKIN');
             formMessage.style.backgroundColor = "green";
             setResult("Your Order has been placed Successfully!");
-            console.log('Order Successfully Placed!');
             formMessage.classList.add('disabled');
+            // console.log('Order Successfully Placed!');
         } catch (error) {
             console.error('FAILED... Order Place', error);
             formMessage.style.color = "red";
@@ -102,7 +88,7 @@ const CheckOut = () => {
             address: '',
             apartment: '',
             city: '',
-            state: '',
+            state: 'Punjab',
             zip: '',
             phone: '',
             notes: '',
@@ -110,22 +96,6 @@ const CheckOut = () => {
         })
 
     };
-
-
-    // const sendEmail = async (e) => {
-    //     e.preventDefault();
-
-    //     const templateParams = {
-    //         email: form.email,
-    //         message: 'Test message',
-    //     }
-    //     try {
-    //         await emailjs.send('service_anuuuvq', 'template_z0x4as3', templateParams, '2lKqSLcLTPyA1zKIN');
-    //         console.log('SUCCESS!');
-    //     } catch (error) {
-    //         console.error('FAILED...', error);
-    //     }
-    // };
 
     // function to add commas to a price 
     function formatPrice(price) {

@@ -4,7 +4,7 @@ import teamImg from '../../public/Images/teamImg.png'
 const Team = () => {
     return (
         <>
-            <section className="py-5">
+            <section className="my-5">
                 <div className="container">
                     <div className="row align-items-center justify-content-center">
                         <div className="col-md-8 col-lg-7 order-2 order-md-1">

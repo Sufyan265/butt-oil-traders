@@ -48,8 +48,8 @@ const Contact = () => {
                                 </div>
                                 <div className="col-md-4 w-100">
                                     {/* <div className="d-grid"> */}
-                                    <button type="submit" className="btn btn-dark btnStyle submitBtn" style={{ backgroundColor: "--var(primaryColor)" }}>Send message</button>
-                                    <span id='form_message'>{result}</span>
+                                    <button type="submit" className="btn btn-dark btnStyle submitBtn" id='form_message' style={{ backgroundColor: "--var(primaryColor)" }}>{result}</button>
+                                    {/* <span id='form_message'>{result}</span> */}
                                     {/* </div> */}
                                 </div>
                             </form>
@@ -67,8 +67,8 @@ const Contact = () => {
                         <div className="col-lg-5 mt-5 mt-lg-0">
                             <div className="mb-4">
                                 <h5>Address</h5>
-                                <p>Shamcauto Market, Chalarah Sxop7chungi <br />
-                                    Amar Sidhu, 17km Ferozpur Road Lahore
+                                <p>Shami Auto Market, Chalarah Stop, <br />
+                                    Chungi Amar Sindhu 17KM Ferozpur Road Lahore
                                 </p>
                             </div>
                             <div className="mb-4">

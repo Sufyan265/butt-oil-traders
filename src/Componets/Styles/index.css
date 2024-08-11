@@ -72,9 +72,11 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
 }
+
 .crudIconStyle:hover {
     scale: 1.1;
 }
+
 .crudIconStyle:active {
     scale: 1;
 }
@@ -119,6 +121,7 @@ body {
     .rowStyle .row>* {
         width: 50%;
     }
+
     .custom-modal {
         min-width: 95vw;
         max-width: 95vw;

@@ -20,7 +20,6 @@ export const DataProvider = (props) => {
     }, {});
 
 
-
     const bestSellingData = [
         { id: 1, img: imagePaths['product1.png'], title: "Premium Engine Oil", desc: "Our Premium Engine Oil provides high-performance protection and lubrication, ensuring your engine runs smoothly under all conditions. Perfect for those who demand the best for their vehicles.", category: "Engine Oil", price: 2000 },
         { id: 2, img: imagePaths['populerOil.jpg'], title: "Synthetic Gear Oil", desc: "Experience the advanced formulation of our Synthetic Gear Oil, which offers superior lubrication and wear protection, ensuring your gear system operates efficiently and reliably.", category: "Gear Oil", price: 4000 },
