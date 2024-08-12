@@ -75,6 +75,9 @@
 }
 
 
+.teamSection .lead {
+    font-size: 1rem;
+}
 
 
 
@@ -140,7 +143,9 @@
     position: sticky;
     top: 90px;
   }
-
+.checkOutSection .row {
+  flex-wrap: wrap-reverse;
+}
 
 
 
@@ -178,4 +183,59 @@
     min-width: inherit;
     max-width: 400px;
     transition: all 0.3s ease;
+}
+
+
+
+
+
+/* ____________________Hero sction_______________________ */
+.hero-section {
+  background-image: url("../../../public/Images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  /* height: 40rem;  */
+  height: auto; 
+  padding: 17% 15%;
+  /* width: 90%; */
+  margin: 0 3%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem; /* Reduced font size */
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1rem; /* Reduced font size */
+  margin-bottom: 1.2rem;
+}
+
+.hero-section .btn-custom {
+  background-color: #000 !important;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: unset;
+}
+
+.btn-custom:hover {
+  background-color: #444;
+}
+
+
+
+
+/* Shop.jsx */
+.shopProducts .headingStyle {
+  font-size: 1.2rem !important;
+  margin-bottom: 0.5rem;
 }

@@ -15,6 +15,9 @@
 .productCard {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    /* box-shadow: 0px 0px 10px #0000001f;
+    padding: 1rem 0;
+    border-radius: 10px; */
 }
 
 .productCard .headingStyle {

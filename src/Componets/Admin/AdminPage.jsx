@@ -5,7 +5,7 @@ import '../Styles/adminStyle.css';
 import { useNavigate } from 'react-router-dom';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CardItem from '../CardItem';
+// import CardItem from '../CardItem';
 
 const initialProduct = { id: '', img: '', title: '', desc: '', category: '', price: '' };
 

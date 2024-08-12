@@ -36,8 +36,8 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '100vh',
-        padding: '0 20px',
+        minHeight: '90vh',
+        padding: '0 1.2rem',
         textAlign: 'center',
     },
     heading: {

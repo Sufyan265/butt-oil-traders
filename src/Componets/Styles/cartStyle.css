@@ -49,6 +49,8 @@
  .cartPage .img-fluid {
      border-radius: 8px;
      max-height: 8rem;
+     object-fit: contain;
+     object-position: center;
  }
 
  .cartPage .quantity-input {
@@ -69,20 +71,6 @@
      -webkit-line-clamp: 3;
  }
 
- .trashStyle {
-     font-size: 1.3rem;
-     color: red;
-     cursor: pointer;
- }
-
- .trashStyle:hover {
-     scale: 1.1;
-     color: rgb(229, 0, 0);
- }
-
- .trashStyle:active {
-     scale: 1;
- }
 
  /* .cartIcon {
     font-size: 1.1rem;

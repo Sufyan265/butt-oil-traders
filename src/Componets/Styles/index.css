@@ -27,7 +27,9 @@ body {
 .subHeading {
     text-transform: uppercase;
 }
-
+.logo {
+    width: 5rem;
+}
 .paragraphStyle {
     font-size: 0.9rem;
     font-weight: 400;
@@ -78,6 +80,22 @@ body {
 }
 
 .crudIconStyle:active {
+    scale: 1;
+}
+
+.trashStyle {
+    font-size: 1.3rem;
+    color: rgb(231, 0, 0);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.trashStyle:hover {
+    scale: 1.1;
+    color: rgb(212, 0, 0);
+}
+
+.trashStyle:active {
     scale: 1;
 }
 

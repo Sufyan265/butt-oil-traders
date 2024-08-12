@@ -1,0 +1,35 @@
+/* .loginPage {
+    font-family: "Roboto", sans-serif;
+} */
+
+/* Add to userStyle.css */
+.signupPage .card {
+    height: auto; /* Adjust based on your design needs */
+}
+
+.signupPage .card .img-container {
+    height: 100%; /* Ensures the container fills the card vertically */
+}
+
+.signupPage img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem 0 0 1rem;
+}
+
+/* Ensure the viewport height is utilized fully for the signup section */
+.signupPage .vh-90 {
+    height: 90vh;
+}
+
+/* Container height should fill the parent */
+.signupPage .container, .row, .col-xl-10, .card, .row.g-0 {
+    height: 100%;
+}
+
+/* Ensure image fills the container height */
+.signupPage .img-container img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem 0 0 1rem;
+}

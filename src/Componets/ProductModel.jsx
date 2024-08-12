@@ -23,7 +23,7 @@ const ProductModal = ({ show, handleClose, product }) => {
     }
 
     return (
-        <Modal show={show} onHide={handleClose} dialogClassName="m-auto custom-modal h-100" centered>
+        <Modal show={show} onHide={handleClose} dialogClassName="m-auto custom-modal h-auto my-3" centered>
             <Modal.Header closeButton>
                 <Modal.Title className='w-100 text-center'>{product.title}</Modal.Title>
             </Modal.Header>
@@ -38,9 +38,10 @@ const ProductModal = ({ show, handleClose, product }) => {
                         <div className="col-md-6">
                             <div className="modal-details">
                                 <h4>{product.title}</h4>
+                                <p><strong>Product ID: </strong> {product.id}</p>
                                 <p><strong>Category:</strong> {product.category}</p>
                                 <div className='priceStyle'>Rs. {formatPrice(product.price)}<span>.00</span></div>
-                                <p>{product.desc}</p>
+                                <p className='paragraphStyle'>{product.desc}</p>
                                 <div className="quantity-control">
                                     <button onClick={() => handleQuantityChange(-1)}>-</button>
                                     <input type="text" value={quantity} readOnly />

@@ -4,14 +4,14 @@ import aboutImg from '../../public/Images/aboutImg.png'
 const About = () => {
     return (
         <>
-            <section className="py-5">
+            <section className="py-5 aboutSection">
                 <div className="container">
                     <div className="row gx-4 align-items-center">
                         <div className="col-md-6 order-2 order-lg-1">
                             <div className="me-md-2 me-lg-5 mt-5 mt-md-0">
                                 <span className="text-muted paragraphStyle subHeading">Our Story</span>
                                 <h2 className="display-5 fw-bold">About Us</h2>
-                                <p className="lead paragraphStyle">
+                                <p className="paragraphStyle" style={{fontSize: "1rem"}}>
                                     Welcome to Butt Oil Traders, your trusted partner in top-quality automotive filters and lubricants. With years of industry experience, we are committed to providing products that enhance your vehicle's performance and longevity. Our extensive range includes oil filters, diesel filters, air filters, AC filters, and petrol filters, all sourced from reputable manufacturers to ensure the highest standards of quality and reliability. <br /><br />
 
                                     At Butt Oil Traders, we understand the importance of maintaining your vehicle's health. Our team of experts is passionate about automotive care and ready to assist you with any questions or concerns. We believe in building long-term relationships by offering personalized service and support, ensuring you have the best products and information for your vehicle's maintenance.<br /><br />

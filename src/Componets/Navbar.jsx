@@ -23,10 +23,8 @@ const Navbar = () => {
             <header>
                 <nav className="navbar navbar-expand-lg fixed-top navbarStyle" data-bs-theme="light">
                     <div className="container">
-                        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="navbar-brand mx-auto brandName">
-                            {/* <a className="navbar-brand" href="#"> */}
+                        <Link to="/" onClick={() => window.scrollTo({ top: 0 })} className="navbar-brand mx-auto brandName">
                             <img src={logo_t_sm} alt="logo" />
-                            {/* </a> */}
                             {/* <span className="navbar-brand ">Butt Oil Traders</span> */}
                             Butt Oil Traders
                         </Link>
@@ -41,22 +39,22 @@ const Navbar = () => {
                                     <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/shop" className={`nav-link ${location.pathname === '/shop' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Shop</Link>
+                                    <Link to="/shop" className={`nav-link ${location.pathname === '/shop' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0 })}>Shop</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>
+                                    <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0 })}>About</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Contact Us</Link>
+                                    <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0 })}>Contact Us</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/refundpolicy" className={`nav-link ${location.pathname === '/refundpolicy' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Refund Policy</Link>
+                                    <Link to="/refundpolicy" className={`nav-link ${location.pathname === '/refundpolicy' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0 })}>Refund Policy</Link>
                                 </li>
                             </ul>
 
 
                             <div className="userContainer d-flex flex-row align-items-center ">
-                                <Link to="/cart" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                                <Link to="/cart" onClick={() => window.scrollTo({ top: 0 })}>
                                     <OverlayTrigger placement="bottom" overlay={tooltip}>
                                         <button type="button" className="btn btn-outline-dark cart-btn">
                                             <FontAwesomeIcon icon={faShoppingCart} />
@@ -67,11 +65,11 @@ const Navbar = () => {
 
 
 
-                                    <Link to={!isAdmin ? "/adminlogin" : "/admin"} className="nav-link profileIcon" role="button">
-                                        <FontAwesomeIcon icon={faUser} />
-                                    </Link>
+                                {/* <Link to={!isAdmin ? "/adminlogin" : "/admin"} className="nav-link profileIcon" role="button">
+                                    <FontAwesomeIcon icon={faUser} />
+                                </Link> */}
 
-                                {/* <ul className="navbar-nav mb-2 mb-lg-0 profileIcon">
+                                <ul className="navbar-nav mb-2 mb-lg-0 profileIcon">
                                     <li className="nav-item dropdown">
                                         <a href="!#" className="nav-link dropdown-toggle" data-toggle="dropdown" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <FontAwesomeIcon icon={faUser} />
@@ -81,18 +79,18 @@ const Navbar = () => {
                                             aria-labelledby="userDropdown"
                                         >
                                             <li>
-                                                <Link to="/" className="dropdown-item">
+                                                <Link to="/login" className="dropdown-item" onClick={() => window.scrollTo({ top: 0 })}>
                                                     Login
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/" className="dropdown-item">
+                                                <Link to="/signup" className="dropdown-item" onClick={() => window.scrollTo({ top: 0 })}>
                                                     Sign Up
                                                 </Link>
                                             </li>
                                         </ul>
                                     </li>
-                                </ul> */}
+                                </ul>
                             </div>
 
                         </div>
