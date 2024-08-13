@@ -6,9 +6,11 @@ import logo_t_sm from '../../public/Images/logo-transparent-sm.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 import ContextApi from '../Context/ContextApi';
+// import { DataContext } from '../Context/DataContext';
 
 const Navbar = () => {
     const { totalItems } = useContext(ContextApi);
+    // const { getProducts } = useContext(DataContext);
     let location = useLocation();
 
 

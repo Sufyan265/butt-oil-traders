@@ -178,7 +178,7 @@ const CheckOut = () => {
                             </div>
                         </div>
                         {/* <span id='form_message'>{result}</span> */}
-                        <button type="submit" id='order_message' className="btn btn-primary btn-lg w-100">{result}</button>
+                        <button type="submit" id='order_message' className="btn btn-dark py-3 w-100 btnStyle">{result}</button>
                     </form>
                 </div>
                 <div className="col-md-5">
@@ -186,10 +186,10 @@ const CheckOut = () => {
                         <h4 className="mb-3">Your order</h4>
                         <ul className="list-group mb-3">
                             {cartItems.map(item => (
-                                <li key={item.id} className="list-group-item d-flex justify-content-between lh-sm">
+                                <li key={item._id} className="list-group-item d-flex justify-content-between lh-sm">
                                     <div>
                                         <h6 className="my-0">{item.title}</h6>
-                                        <p className="text-muted card-desc paragraphStyle">{item.desc}</p>
+                                        <p className="text-muted card-desc paragraphStyle">{item.description}</p>
                                     </div>
                                     <span className="text-muted mx-3 text-nowrap">× {formatPrice(item.quantity)}</span>
                                     <span className="text-muted">Rs. {formatPrice(item.price)}</span>

@@ -3,22 +3,23 @@ import { tailChase } from 'ldrs';
 
 tailChase.register();
 
-const Loading = () => {
+const Loading = (props) => {
+    const { height="auto", size="30" } = props
     return (
         <>
             <style>
                 {`
                 .loading-container {
+                possition: relative;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 70vh;
-                padding: 1.2rem;
+                height: ${height};
                 }
             `}
             </style>
             <div className="loading-container">
-                <l-tail-chase size="40" speed="1.75" color="black"></l-tail-chase>
+                <l-tail-chase size={size} speed="1.75" color="black"></l-tail-chase>
             </div>
         </>
     );

@@ -4,10 +4,7 @@ import { DataContext } from './DataContext';
 import { useNavigate } from 'react-router-dom';
 
 const EcomFunctions = (props) => {
-    const { bestSellingData, filtersData, shopData, } = useContext(DataContext);
-
-
-
+    const { bestSellingData, filtersData, shopData, products } = useContext(DataContext);
 
     // Retrieve initial cart items from local storage, or default to an empty array
     const getInitialCart = () => {
@@ -27,14 +24,15 @@ const EcomFunctions = (props) => {
     const addToCart = (id, productQuantity = 1) => {
 
         // Find the product using the id from bestSellingData or filtersData
-        const product = bestSellingData.find(product => product.id === id) ||
-            filtersData.find(product => product.id === id);
+        const product = bestSellingData.find(product => product._id === id) ||
+            filtersData.find(product => product._id === id) ||
+            products.find(product => product._id === id);
 
         const updatedCart = cartItems.map(item =>
-            item.id === id ? { ...item, quantity: item.quantity + productQuantity } : item
+            item._id === id ? { ...item, quantity: item.quantity + productQuantity } : item
         );
 
-        if (!updatedCart.some(item => item.id === id)) {
+        if (!updatedCart.some(item => item._id === id)) {
             updatedCart.push({ ...product, quantity: productQuantity });
         }
 
@@ -45,7 +43,7 @@ const EcomFunctions = (props) => {
     // Function to update the quantity of a specific item in the cart
     const updateQuantity = (id, quantity) => {
         const updatedCart = cartItems.map(item =>
-            item.id === id ? { ...item, quantity: quantity } : item
+            item._id === id ? { ...item, quantity: quantity } : item
         );
 
         setCartItems(updatedCart);
@@ -54,7 +52,7 @@ const EcomFunctions = (props) => {
 
     // Function to remove an item from the cart
     const removeItem = (id) => {
-        const updatedCart = cartItems.filter(item => item.id !== id);
+        const updatedCart = cartItems.filter(item => item._id !== id);
         setCartItems(updatedCart);
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
     };
@@ -67,6 +65,8 @@ const EcomFunctions = (props) => {
     const totalItemsCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
 
+
+    // _________________________________
     const navigate = useNavigate();
     const handleNavClick = async (sectionId, path = "/") => {
         // if (location.pathname !== '/') {
@@ -84,6 +84,7 @@ const EcomFunctions = (props) => {
         //     }
         // }
     };
+
 
     return (
         <ContextApi.Provider value={{

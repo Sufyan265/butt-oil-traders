@@ -1,40 +1,53 @@
-import React, { useContext, lazy, Suspense } from 'react';
-import ContextApi from '../Context/ContextApi';
-import Loading from './Loading'; // Use the loading component for Suspense fallback
+import React, { lazy, Suspense, useContext, useEffect } from 'react';
+// import ContextApi from '../Context/ContextApi';
+import { DataContext } from '../Context/DataContext';
+
+import LandingSection from './LandingSection';
+// import Products from './Products';
+import PopularOil from './PopularOil';
+import Team from './Team';
+import Testimonials from './Testimonials';
+import Hero from './Hero';
+import Loading from './Loading';
 
 // Lazy load the components
-const LandingSection = lazy(() => import('./LandingSection'));
+// const LandingSection = lazy(() => import('./LandingSection'));
 const Products = lazy(() => import('./Products'));
-const PopularOil = lazy(() => import('./PopulerOil'));
-const Team = lazy(() => import('./Team'));
-const Testimonials = lazy(() => import('./Testimonials'));
-const Hero = lazy(() => import('./Hero'));
+// const PopularOil = lazy(() => import('./PopulerOil'));
+// const Team = lazy(() => import('./Team'));
+// const Testimonials = lazy(() => import('./Testimonials'));
+// const Hero = lazy(() => import('./Hero'));
 
 const Home = () => {
-    const { bestSellingData, filtersData } = useContext(ContextApi);
+    const { bestSellingData, filtersData, getProducts, bestProducts, populerProducts, } = useContext(DataContext);
+
+    useEffect(() => {
+        // getProducts();
+        bestProducts();
+        populerProducts();
+        // const authUser = () => {
+        // if (localStorage.getItem("token")) {
+        //     getNotes();
+
+        //     getUser();
+        // } else {
+        //     navigate("/login")
+        // }
+        // }
+        // authUser();
+    }, []);
+
     return (
         <>
-            <Suspense fallback={<Loading />}>
-                <LandingSection />
-            </Suspense>
-            <Suspense fallback={<Loading />}>
-                <Products data={bestSellingData} heading="Best Selling Products" subHeading="Popular Products" />
-            </Suspense>
-            <Suspense fallback={<Loading />}>
-                <Hero />
-            </Suspense>
-            <Suspense fallback={<Loading />}>
+            <LandingSection />
+            <Products data={bestSellingData} heading="Best Selling Products" subHeading="Popular Products" />
+            <Hero />
+            <Suspense fallback={<Loading height="70vh" size="40" />}>
                 <Products data={filtersData} heading="Car Filters" subHeading="Trending Now" />
             </Suspense>
-            <Suspense fallback={<Loading />}>
-                <Testimonials />
-            </Suspense>
-            <Suspense fallback={<Loading />}>
-                <PopularOil />
-            </Suspense>
-            <Suspense fallback={<Loading />}>
-                <Team />
-            </Suspense>
+            <Testimonials />
+            <PopularOil />
+            <Team />
         </>
     )
 }

@@ -3,8 +3,8 @@
 // export const UserContext = createContext();
 
 // export const UserProvider = (props) => {
-//     // const host = "http://localhost:5000";
-//     const host = "https://inotebook-backend-tau.vercel.app";
+//     const host = "http://localhost:5000";
+//     // const host = "https://inotebook-backend-tau.vercel.app";
 
 //     const [errorMessage, setErrorMessage] = useState("An error has occurred");
 //     const [progress, setProgress] = useState(0);
@@ -15,8 +15,6 @@
 //             "_id": "----------",
 //             "name": "-----",
 //             "email": "-----@example.com",
-//             "gender": "----",
-//             "date": "--/--/--",
 //             "__v": "-"
 //         }
 //     }

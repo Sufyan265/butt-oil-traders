@@ -38,10 +38,10 @@ const ProductModal = ({ show, handleClose, product }) => {
                         <div className="col-md-6">
                             <div className="modal-details">
                                 <h4>{product.title}</h4>
-                                <p><strong>Product ID: </strong> {product.id}</p>
+                                <p><strong>Product ID: </strong> {product._id}</p>
                                 <p><strong>Category:</strong> {product.category}</p>
                                 <div className='priceStyle'>Rs. {formatPrice(product.price)}<span>.00</span></div>
-                                <p className='paragraphStyle'>{product.desc}</p>
+                                <p className='paragraphStyle'>{product.description}</p>
                                 <div className="quantity-control">
                                     <button onClick={() => handleQuantityChange(-1)}>-</button>
                                     <input type="text" value={quantity} readOnly />
@@ -49,10 +49,10 @@ const ProductModal = ({ show, handleClose, product }) => {
                                 </div>
 
                                 {/* <button className="btn btn-dark btnStyle" onClick={() => {
-                                    updateQuantity(product.id, quantity);
-                                    addToCart(product.id);
+                                    updateQuantity(product._id, quantity);
+                                    addToCart(product._id);
                                 }}>Add to Cart</button> */}
-                                <button className="btn btn-dark btnStyle" onClick={() => addToCart(product.id, quantity)}>Add to Cart</button>
+                                <button className="btn btn-dark btnStyle" onClick={() => addToCart(product._id, quantity)}>Add to Cart</button>
                             </div>
                         </div>
                     </div>

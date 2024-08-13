@@ -1,5 +1,6 @@
 .bestProducts {
     padding-top: 3rem;
+    min-height: 100vh;
 }
 
 .bestProdHeadings {
@@ -46,16 +47,6 @@
 
 .card-categorize {
     margin-bottom: 0.5rem !important;
-}
-
-.card-desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    /* Ensure text wraps normally before clamping */
 }
 
 .productContent .btnStyle {

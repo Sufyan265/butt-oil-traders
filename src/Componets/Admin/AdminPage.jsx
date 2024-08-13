@@ -51,19 +51,19 @@ const AdminPage = () => {
         e.preventDefault();
 
         // Check if the product ID already exists only if it's a new product
-        const isEditing = product.id && shopData.some((p) => p.id === product.id);
-        const existingProduct = shopData.find((p) => p.id === product.id);
+        const isEditing = product._id && shopData.some((p) => p._id === product._id);
+        const existingProduct = shopData.find((p) => p._id === product._id);
 
         if (existingProduct) {
-            if (product.id === existingProduct.id) {
+            if (product._id === existingProduct._id) {
                 setError('Product ID already exists. Please use a different ID.');
                 return;
             }
         }
 
-        if (product.id && product.title && product.price) {
+        if (product._id && product.title && product.price) {
             const updatedProducts = existingProduct
-                ? shopData.map((p) => (p.id === product.id ? product : p))
+                ? shopData.map((p) => (p._id === product._id ? product : p))
                 : [...shopData, product];
 
             // setShopData(updatedProducts);
@@ -76,7 +76,7 @@ const AdminPage = () => {
     };
 
     const handleEditProduct = (id) => {
-        const prod = shopData.find((p) => p.id === id);
+        const prod = shopData.find((p) => p._id === id);
         setProduct(prod);
         setImagePreview(prod.img);
         setError('');
@@ -84,7 +84,7 @@ const AdminPage = () => {
     };
 
     const handleRemoveProduct = (id) => {
-        const updatedProducts = shopData.filter((p) => p.id !== id);
+        const updatedProducts = shopData.filter((p) => p._id !== id);
         // setShopData(updatedProducts);
         setShopData(updatedProducts); // Update Context API
     };
@@ -118,12 +118,12 @@ const AdminPage = () => {
                 {shopData.length > 0 ? (
                     // <>
                         shopData.map((p) => (
-                        <Col key={p.id} lg={3} md={4} sm={6} xs={12} className="mb-4">
+                        <Col key={p._id} lg={3} md={4} sm={6} xs={12} className="mb-4">
                             <Card>
                                 <Card.Body>
                                     <div className="w-100 d-flex justify-content-end">
-                                        <FontAwesomeIcon icon={faPenToSquare} className='mx-2 crudIconStyle' onClick={() => handleEditProduct(p.id)} />
-                                        <FontAwesomeIcon icon={faTrashCan} className='mx-2 trashStyle' onClick={() => handleRemoveProduct(p.id)} />
+                                        <FontAwesomeIcon icon={faPenToSquare} className='mx-2 crudIconStyle' onClick={() => handleEditProduct(p._id)} />
+                                        <FontAwesomeIcon icon={faTrashCan} className='mx-2 trashStyle' onClick={() => handleRemoveProduct(p._id)} />
                                     </div>
 
                                     <Card.Title>{p.title}</Card.Title>
@@ -154,7 +154,7 @@ const AdminPage = () => {
 
             <Modal show={showModal} onHide={handleCloseModal} dialogClassName="m-auto custom-modal my-2">
                 <Modal.Header closeButton>
-                    <Modal.Title>{product.id ? 'Edit Product' : 'Add New Product'}</Modal.Title>
+                    <Modal.Title>{product._id ? 'Edit Product' : 'Add New Product'}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {error && <Alert variant="danger">{error}</Alert>}
@@ -164,7 +164,7 @@ const AdminPage = () => {
                             <Form.Control
                                 type="text"
                                 name="id"
-                                value={product.id}
+                                value={product._id}
                                 onChange={handleInputChange}
                                 placeholder="Product ID"
                                 required
@@ -231,7 +231,7 @@ const AdminPage = () => {
                             />
                         </Form.Group>
                         <Button variant="dark" type="submit" className='btnStyle'>
-                            {product.id ? 'Update Product' : 'Add Product'}
+                            {product._id ? 'Update Product' : 'Add Product'}
                         </Button>
                     </Form>
                 </Modal.Body>

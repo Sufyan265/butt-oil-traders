@@ -12,5 +12,8 @@ export default defineConfig({
   server: {
     host: true, // Use 0.0.0.0 to listen on all IP addresses
     port: 5173, // or any other port you prefer
+    proxy: {
+      '/uploads': 'http://localhost:5000',
+    },
   },
 })

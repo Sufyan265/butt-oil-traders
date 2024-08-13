@@ -20,6 +20,7 @@ const products = (props) => {
         setShow(false);
         setSelectedProduct(null);
     };
+    
 
     return (
         <>
@@ -32,7 +33,7 @@ const products = (props) => {
 
                     <div className="row justify-content-center">
                         {data.map((card) => (
-                            <div key={card.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex flex-column align-items-center my-3" onClick={() => handleShow(card)}>
+                            <div key={card._id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex flex-column align-items-center my-3" onClick={() => handleShow(card)}>
                                 <CardItem card={card} />
                             </div>
                         ))}

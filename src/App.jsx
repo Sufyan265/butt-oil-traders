@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import './Componets/Styles/App.css'
 import './Componets/Styles/sectionStyle.css'
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EcomFunctions from "./Context/EcomFunctions"
 import { FormProvider } from "./Context/FormContext"
@@ -34,10 +35,12 @@ function App() {
           <FormProvider>
             <EcomFunctions>
               <StructuredData />
+
               <Navbar />
               <div className="allSections">
-                <Suspense fallback={<Loading />}>
-                  <Routes>
+
+                <Suspense fallback={<Loading height="70vh" size="40" />}>
+                  <Routes key={location.pathname}>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/cart" element={<Cart />} />
                     <Route exact path="/checkout" element={<CheckOut />} />
