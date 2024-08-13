@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import './Componets/Styles/App.css'
 import './Componets/Styles/sectionStyle.css'
 
@@ -11,10 +11,12 @@ import PrivateRoute from '../routes/PrivateRoute';
 import Navbar from './Componets/Navbar'
 import Footer from './Componets/Footer';
 import Loading from './Componets/Loading';
+import { UserProvider } from './Context/UserContext';
+import Alert from './Componets/Alert';
 // import Home from './Componets/Home';
 
 // Lazy load components
-const Home = lazy(() => import('./Componets/Home')); 
+const Home = lazy(() => import('./Componets/Home'));
 const About = lazy(() => import('./Componets/About'));
 const Contact = lazy(() => import('./Componets/Contact'));
 const RefundPolicy = lazy(() => import('./Componets/RefundPolicy'));
@@ -28,38 +30,48 @@ const Login = lazy(() => import('./Componets/User/Login'));
 const Signup = lazy(() => import('./Componets/User/Signup'));
 
 function App() {
+
+  const [alert, setAlert] = useState(null);
+  const showAlert = (type, msg) => {
+    setAlert({ msg, type, })
+    setTimeout(() => { setAlert(null) }, 3000)
+  }
   return (
     <>
       <Router basename="/butt-oil-traders">
-        <DataProvider>
-          <FormProvider>
-            <EcomFunctions>
-              <StructuredData />
+        <UserProvider showAlert={showAlert}>
+          <DataProvider>
+            <FormProvider>
+              <EcomFunctions>
+                <StructuredData />
 
-              <Navbar />
-              <div className="allSections">
+                <Navbar />
+                <div className="allSections">
 
-                <Suspense fallback={<Loading height="70vh" size="40" />}>
-                  <Routes key={location.pathname}>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/cart" element={<Cart />} />
-                    <Route exact path="/checkout" element={<CheckOut />} />
-                    <Route exact path="/shop" element={<Shop heading="Shop" subHeading="Explore Products" />} />
-                    <Route exact path="/about" element={<About />} />
-                    <Route exact path="/contact" element={<Contact />} />
-                    <Route exact path="/refundpolicy" element={<RefundPolicy />} />
-                    <Route path="/adminlogin" element={<AdminLogin />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </Suspense>
-              </div>
-              <Footer />
-            </EcomFunctions>
-          </FormProvider>
-        </DataProvider>
+                  <Alert alertText={alert} />
+
+                  <Suspense fallback={<Loading height="70vh" size="40" />}>
+                    <Routes key={location.pathname}>
+                      <Route exact path="/" element={<Home />} />
+                      <Route exact path="/cart" element={<Cart />} />
+                      <Route exact path="/checkout" element={<CheckOut />} />
+                      <Route exact path="/shop" element={<Shop heading="Shop" subHeading="Explore Products" />} />
+                      <Route exact path="/about" element={<About />} />
+                      <Route exact path="/contact" element={<Contact />} />
+                      <Route exact path="/refundpolicy" element={<RefundPolicy />} />
+                      <Route path="/adminlogin" element={<AdminLogin />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/signup" element={<Signup />} />
+                      <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Suspense>
+                </div>
+                <Footer />
+              </EcomFunctions>
+            </FormProvider>
+          </DataProvider>
+        </UserProvider>
       </Router>
     </>
   );

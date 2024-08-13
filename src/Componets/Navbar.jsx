@@ -1,24 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Styles/App.css"
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo_t_sm from '../../public/Images/logo-transparent-sm.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 import ContextApi from '../Context/ContextApi';
-// import { DataContext } from '../Context/DataContext';
+import { UserContext } from '../Context/UserContext';
 
 const Navbar = () => {
     const { totalItems } = useContext(ContextApi);
-    // const { getProducts } = useContext(DataContext);
+    const { userData, logout, getUser } = useContext(UserContext);
+
     let location = useLocation();
 
 
-    const isAdmin = localStorage.getItem('isAdmin');
+    // const isAdmin = localStorage.getItem('isAdmin');
 
     const tooltip = (
         <Tooltip id="tooltip-example">Cart</Tooltip>
     );
+
+    const navigate = useNavigate();
+    useEffect(() => {
+        const authUser = () => {
+            if (localStorage.getItem("token")) {
+                getUser();
+            }
+        }
+        authUser();
+    }, [navigate])
 
     return (
         <>
@@ -73,26 +84,38 @@ const Navbar = () => {
 
                                 <ul className="navbar-nav mb-2 mb-lg-0 profileIcon">
                                     <li className="nav-item dropdown">
-                                        <a href="!#" className="nav-link dropdown-toggle" data-toggle="dropdown" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a href="#!" className="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <FontAwesomeIcon icon={faUser} />
                                         </a>
-                                        <ul
-                                            className="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="userDropdown"
-                                        >
-                                            <li>
-                                                <Link to="/login" className="dropdown-item" onClick={() => window.scrollTo({ top: 0 })}>
-                                                    Login
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/signup" className="dropdown-item" onClick={() => window.scrollTo({ top: 0 })}>
-                                                    Sign Up
-                                                </Link>
-                                            </li>
+                                        <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                            {localStorage.getItem("token") ? (
+                                                <>
+                                                    <li className="dropdown-item userDataStyle">{userData.user.name}</li>
+                                                    <li className="dropdown-item userDataStyle">{userData.user.email}</li>
+                                                    <li>
+                                                        <button className="dropdown-item mt-3" onClick={logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</button>
+                                                    </li>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <li>
+                                                        <Link to="/login" className="dropdown-item" onClick={() => window.scrollTo({ top: 0 })}>
+                                                            Login
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link to="/signup" className="dropdown-item" onClick={() => window.scrollTo({ top: 0 })}>
+                                                            Sign Up
+                                                        </Link>
+                                                    </li>
+                                                </>
+                                            )}
                                         </ul>
                                     </li>
                                 </ul>
+
+
+
                             </div>
 
                         </div>

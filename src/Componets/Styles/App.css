@@ -71,9 +71,9 @@
     font-size: 1.1rem !important;
 }
 
-/* .profileIcon .nav-link {
-font-size: 1.1rem;
-} */
+.profileIcon svg {
+    font-size: 1.1rem;
+}
 
 .submitBtn {
     background-color: var(--primaryColor);

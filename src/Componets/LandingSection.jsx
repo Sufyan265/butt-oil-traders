@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import "./Styles/landingStyle.css"
 import { Link } from 'react-router-dom';
 import landingImg from '../../public/Images/landing-img.png'
