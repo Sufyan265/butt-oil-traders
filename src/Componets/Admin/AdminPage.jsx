@@ -1,39 +1,48 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Form, Button, Card, Col, Row, Modal, Alert } from 'react-bootstrap';
 import { DataContext } from '../../Context/DataContext';
-import '../Styles/adminStyle.css';
-import { useNavigate } from 'react-router-dom';
+// import '../Styles/adminStyle.css';
+// import { useNavigate } from 'react-router-dom';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import CardItem from '../CardItem';
 
-const initialProduct = { id: '', img: '', title: '', desc: '', category: '', price: '' };
+const initialProduct = { id: '', img: '', title: '', description: '', category: '', price: '' };
 
 const AdminPage = () => {
-    const { shopData, setShopData } = useContext(DataContext); // Use Context API
+    const { products, setProducts, getProducts, bestProducts, populerProducts } = useContext(DataContext); // Use Context API
     const [product, setProduct] = useState(initialProduct);
-    // const [products, setProducts] = useState(shopData || []);
+    // const [products, setProducts] = useState(products || []);
     const [imagePreview, setImagePreview] = useState('');
     const [error, setError] = useState('');
     const [showModal, setShowModal] = useState(false);
 
-    const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.removeItem('isAdmin');
-        localStorage.removeItem('adminUsername');
-        localStorage.removeItem('adminPassword');
-        navigate('/adminlogin');
-    };
+    useEffect(() => {
+        getProducts();
+        bestProducts();
+        populerProducts();
+    }, []);
+
+
+
+    // const navigate = useNavigate();
+
+    // const handleLogout = () => {
+    //     localStorage.removeItem('isAdmin');
+    //     localStorage.removeItem('adminUsername');
+    //     localStorage.removeItem('adminPassword');
+    //     navigate('/adminlogin');
+    // };
 
     // useEffect(() => {
-    //     setShopData(shopData);
-    // }, [shopData]);
+    //     setProducts(products);
+    // }, [products]);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setProduct((prev) => ({ ...prev, [name]: value }));
-    };
+    // const handleInputChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setProduct((prev) => ({ ...prev, [name]: value }));
+    // };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -50,24 +59,13 @@ const AdminPage = () => {
     const handleAddProduct = (e) => {
         e.preventDefault();
 
-        // Check if the product ID already exists only if it's a new product
-        const isEditing = product._id && shopData.some((p) => p._id === product._id);
-        const existingProduct = shopData.find((p) => p._id === product._id);
-
-        if (existingProduct) {
-            if (product._id === existingProduct._id) {
-                setError('Product ID already exists. Please use a different ID.');
-                return;
-            }
-        }
-
         if (product._id && product.title && product.price) {
             const updatedProducts = existingProduct
-                ? shopData.map((p) => (p._id === product._id ? product : p))
-                : [...shopData, product];
+                ? products.map((p) => (p._id === product._id ? product : p))
+                : [...products, product];
 
-            // setShopData(updatedProducts);
-            setShopData(updatedProducts); // Update Context API
+            // setProducts(updatedProducts);
+            setProducts(updatedProducts); // Update Context API
             setProduct(initialProduct);
             setImagePreview('');
             setError('');
@@ -76,7 +74,7 @@ const AdminPage = () => {
     };
 
     const handleEditProduct = (id) => {
-        const prod = shopData.find((p) => p._id === id);
+        const prod = products.find((p) => p._id === id);
         setProduct(prod);
         setImagePreview(prod.img);
         setError('');
@@ -84,9 +82,9 @@ const AdminPage = () => {
     };
 
     const handleRemoveProduct = (id) => {
-        const updatedProducts = shopData.filter((p) => p._id !== id);
-        // setShopData(updatedProducts);
-        setShopData(updatedProducts); // Update Context API
+        const updatedProducts = products.filter((p) => p._id !== id);
+        // setProducts(updatedProducts);
+        setProducts(updatedProducts); // Update Context API
     };
 
     const handleShowModal = () => {
@@ -107,7 +105,7 @@ const AdminPage = () => {
         <div className="container mt-5">
             <div className="w-100 d-flex justify-content-between mb-4 align-items-center">
                 <h1>Admin Dashboard</h1>
-                <Button variant="outline-dark" onClick={handleLogout}>Logout →</Button>
+                {/* <Button variant="outline-dark" onClick={handleLogout}>Logout →</Button> */}
             </div>
 
             <Button variant="dark" className="mb-4 btnStyle" onClick={handleShowModal}>
@@ -115,9 +113,9 @@ const AdminPage = () => {
             </Button>
 
             <Row>
-                {shopData.length > 0 ? (
+                {products.length > 0 ? (
                     // <>
-                        shopData.map((p) => (
+                    products.map((p) => (
                         <Col key={p._id} lg={3} md={4} sm={6} xs={12} className="mb-4">
                             <Card>
                                 <Card.Body>
@@ -131,7 +129,7 @@ const AdminPage = () => {
                                         <strong>Category:</strong> {p.category}
                                     </Card.Text>
                                     <Card.Text className='paragraphStyle card-desc'>
-                                        <strong style={{ color: "black" }}>Description: </strong>{p.desc}
+                                        <strong style={{ color: "black" }}>Description: </strong>{p.description}
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Price:</strong> Rs. {p.price}
@@ -146,7 +144,7 @@ const AdminPage = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
-                        ))
+                    ))
                 ) : (
                     <p>No products available</p>
                 )}
@@ -166,8 +164,8 @@ const AdminPage = () => {
                                 name="id"
                                 value={product._id}
                                 onChange={handleInputChange}
-                                placeholder="Product ID"
-                                required
+                                placeholder="ID will add automatically"
+                                readOnly
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -176,7 +174,7 @@ const AdminPage = () => {
                                 type="file"
                                 accept="image/*"
                                 onChange={handleImageChange}
-                                required
+                                // required
                             />
                             {imagePreview && (
                                 <img
@@ -201,8 +199,8 @@ const AdminPage = () => {
                             <Form.Label>Description</Form.Label>
                             <Form.Control
                                 as="textarea"
-                                name="desc"
-                                value={product.desc}
+                                name="description"
+                                value={product.description}
                                 onChange={handleInputChange}
                                 placeholder="Product Description"
                                 required

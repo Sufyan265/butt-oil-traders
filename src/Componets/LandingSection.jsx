@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Styles/landingStyle.css"
 import { Link } from 'react-router-dom';
-import landingImg from '../../public/Images/landing-img.png'
+import landingImg from '../../public/Images/landing-img.webp'
 // import ContextApi from '../Context/ContextApi';
 
 const LandingSection = () => {
@@ -34,4 +34,4 @@ const LandingSection = () => {
     )
 }
 
-export default LandingSection
+export default React.memo(LandingSection)

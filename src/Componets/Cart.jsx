@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, Suspense, startTransition } from 'react';
 import "./Styles/cartStyle.css";
 import ContextApi from '../Context/ContextApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,6 @@ function formatPrice(price) {
     return number.toLocaleString('en-US');
 }
 
-
 const ShoppingCart = () => {
     const { cartItems, removeItem, updateQuantity, totalItemsCount, totalPrice, } = useContext(ContextApi);
     const { getProducts, bestProducts, populerProducts, } = useContext(DataContext);
@@ -24,10 +23,11 @@ const ShoppingCart = () => {
     const handleImageLoad = () => {
         setIsLoading(false);
     };
+
     useEffect(() => {
-        getProducts();
-        bestProducts();
-        populerProducts();
+            getProducts();
+            bestProducts();
+            populerProducts();
     }, []);
 
     return (
@@ -47,22 +47,21 @@ const ShoppingCart = () => {
                             cartItems.map(item => (
                                 <div className="cart-item row" key={item._id} data-price={item.price}>
                                     <div className="col-3 d-flex justify-content-center">
-                                        {/* <img src={item.img} alt="Product" className="img-fluid" /> */}
-                                        {/* </div> */}
-
                                         <div style={{ position: 'relative' }}>
                                             {isLoading && (
                                                 <div className="loading-container" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
                                                     <Loading size="25" />
                                                 </div>
                                             )}
-                                            <img
-                                                src={item.img} className="img-fluid"
-                                                alt="Loading..."
-                                                onLoad={handleImageLoad}
-                                                style={{ display: isLoading ? 'none' : 'block' }}
-                                                loading="lazy"
-                                            />
+                                            <Suspense fallback={<Loading size="25" />}>
+                                                <img
+                                                    src={item.img} className="img-fluid"
+                                                    alt="Loading..."
+                                                    onLoad={handleImageLoad}
+                                                    style={{ display: isLoading ? 'none' : 'block' }}
+                                                    loading="lazy"
+                                                />
+                                            </Suspense>
                                         </div>
                                     </div>
 
@@ -79,7 +78,6 @@ const ShoppingCart = () => {
                                             onChange={(e) => updateQuantity(item._id, parseInt(e.target.value))}
                                         />
                                         <span className="price text-muted mt-2 d-block">Rs. {formatPrice((item.price * item.quantity).toFixed(2))}</span>
-                                        {/* <button className="btn btn-danger mt-2" onClick={() => removeItem(item._id)}>Remove</button> */}
                                         <FontAwesomeIcon icon={faTrashCan} className='mt-2 trashStyle' onClick={() => removeItem(item._id)} />
                                     </div>
                                 </div>
@@ -93,7 +91,7 @@ const ShoppingCart = () => {
                             <p className="text-muted">Total Items: {totalItemsCount}</p>
                             <h5>Total: Rs. {formatPrice(totalPrice)}</h5>
                             <Link to="/checkout" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                                <button className="btn btn-dark btn-block mt-3 btnStyle" disabled={cartItems.length === 0}>Proceed to Checkout</button>
+                                <button className="btn btn-dark btn-block my-3 w-auto btnStyle" disabled={cartItems.length === 0}>Proceed to Checkout</button>
                             </Link>
                         </div>
                     </div>

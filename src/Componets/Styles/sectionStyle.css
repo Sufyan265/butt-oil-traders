@@ -191,7 +191,7 @@
 
 /* ____________________Hero sction_______________________ */
 .hero-section {
-  background-image: url("../../../public/Images/hero.jpg");
+  background-image: url("../../../public/Images/hero.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

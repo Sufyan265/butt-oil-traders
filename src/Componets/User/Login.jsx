@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import "../Styles/userStyle.css"
 import logo_t_sm from '../../../public/Images/logo-transparent-sm.png';
-import loginImg from '../../../public/Images/login.jpg';
+import loginImg from '../../../public/Images/login.webp';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext';
 
@@ -40,12 +40,12 @@ const Login = () => {
                                             <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: '1px' }}>Sign into your account</h5>
                                             <div data-mdb-input-init className="form-outline mb-4">
                                                 <label className="form-label" htmlFor="form2Example17">Email address</label>
-                                                <input type="email" id="form2Example17" name='email' className="form-control py-2" autoComplete="current-password" onChange={handleChange} />
+                                                <input type="email" id="form2Example17" name='email' className="form-control py-2" autoComplete="current-password" onChange={handleChange} required />
                                             </div>
 
                                             <div data-mdb-input-init className="form-outline mb-4">
                                                 <label className="form-label" htmlFor="form2Example27">Password</label>
-                                                <input type="password" id="form2Example27" name='password' className="form-control py-2" autoComplete="current-password" onChange={handleChange} />
+                                                <input type="password" id="form2Example27" name='password' className="form-control py-2" autoComplete="current-password" onChange={handleChange} required />
                                             </div>
 
                                             <div className="pt-1 mb-4">

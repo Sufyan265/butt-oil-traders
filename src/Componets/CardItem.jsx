@@ -15,7 +15,7 @@ const CardItem = ({ card }) => {
     }
 
     const handleAddToCart = (e) => {
-        e.stopPropagation();
+        e.stopPropagation(); 
         addToCart(card._id);
         setIsAdded(true); // Set the state to true when the item is added to the cart
     };

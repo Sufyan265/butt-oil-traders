@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const DataContext = createContext();
 
@@ -69,12 +70,15 @@ export const DataProvider = (props) => {
     const initialProducts = [];
     const initialBestProducts = [];
     const initialPopulerProducts = [];
+    const initialSingleProduct = [];
 
     const [products, setProducts] = useState(initialProducts)
 
     const [bestSellingData, setBestSellingData] = useState(initialBestProducts)
 
     const [filtersData, setFiltersData] = useState(initialPopulerProducts)
+
+    const [singleProduct, setSingleProduct] = useState(initialSingleProduct)
 
     // Error handling
     const catchError = (error) => {
@@ -98,6 +102,30 @@ export const DataProvider = (props) => {
 
             // const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
             setProducts(data)
+            // console.log(data)
+            // handleError(false)
+        } catch (error) {
+            catchError(error);
+        }
+    }
+
+    // Get single products
+    const getSingleProducts = async (id) => {
+        // API Call ↓
+        try {
+            const response = await fetch(`${host}/products/find/${id}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+            if (!response.ok) {
+                throw new Error(`${response}`);
+            }
+            const data = await response.json();
+
+            // const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+            setSingleProduct(data)
             // console.log(data)
             // handleError(false)
         } catch (error) {
@@ -151,18 +179,32 @@ export const DataProvider = (props) => {
             catchError(error);
         }
     }
-    // populerProducts();
+   
+
+
+    const navigate = useNavigate();
+
+    const handleProductClick = async (productId) => {
+        await getSingleProducts(productId);
+        navigate(`/product/${productId}`);
+    };
 
     return (
         <DataContext.Provider value={{
             bestSellingData,
             filtersData,
             products,
+            singleProduct,
+            setProducts,
+            setSingleProduct,
             // shopData,
             // setShopData,
 
+            handleProductClick,
+
             host,
             getProducts,
+            getSingleProducts,
             bestProducts,
             populerProducts,
 

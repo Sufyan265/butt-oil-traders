@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import populerOilImg from '../../public/Images/populerOil.jpg';
+import populerOilImg from '../../public/Images/populerOil.webp';
 import ContextApi from '../Context/ContextApi';
 
 const PopularOil = () => {
@@ -55,4 +55,4 @@ const PopularOil = () => {
   );
 };
 
-export default PopularOil;
+export default React.memo(PopularOil);

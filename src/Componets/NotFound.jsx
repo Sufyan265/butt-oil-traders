@@ -50,4 +50,4 @@ const styles = {
     },
 };
 
-export default NotFound;
+export default React.memo(NotFound);

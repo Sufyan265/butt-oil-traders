@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import heroImg from "../../public/Images/hero.jpg"
 
 const Hero = () => {
     return (
@@ -18,4 +17,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default React.memo(Hero);

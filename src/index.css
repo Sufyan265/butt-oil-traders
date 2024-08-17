@@ -5,6 +5,10 @@ body {
     scroll-behavior: smooth;
 }
 
+.btn {
+    text-transform: unset;
+}
+
 .allSections {
     padding-top: 82px;
 }
@@ -27,9 +31,11 @@ body {
 .subHeading {
     text-transform: uppercase;
 }
+
 .logo {
     width: 5rem;
 }
+
 .paragraphStyle {
     font-size: 0.9rem;
     font-weight: 400;
@@ -112,6 +118,7 @@ body {
 .userDataStyle {
     font-size: 0.95rem;
 }
+
 .userDataStyle:active {
     background-color: transparent;
     color: var(--darkText);

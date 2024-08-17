@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./Styles/App.css"
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo_t_sm from '../../public/Images/logo-transparent-sm.png'
+import logo_t_sm from '../../public/Images/logo-transparent-sm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 import ContextApi from '../Context/ContextApi';
@@ -14,6 +14,7 @@ const Navbar = () => {
 
     let location = useLocation();
 
+    // const admintoken = import.meta.env.VITE_ADMIN_TOKEN;
 
     // const isAdmin = localStorage.getItem('isAdmin');
 
@@ -21,15 +22,13 @@ const Navbar = () => {
         <Tooltip id="tooltip-example">Cart</Tooltip>
     );
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+    const token = localStorage.getItem("token");
     useEffect(() => {
-        const authUser = () => {
-            if (localStorage.getItem("token")) {
-                getUser();
-            }
+        if (token) {
+            getUser();
         }
-        authUser();
-    }, [navigate])
+    }, [token])
 
     return (
         <>
@@ -65,6 +64,13 @@ const Navbar = () => {
                                 </li>
                             </ul>
 
+                            {userData.user && userData.user.isAdmin && (
+                                <Link to="/admin" onClick={() => window.scrollTo({ top: 0 })}>
+                                    <button type="button" className="btn btn-outline-dark cart-btn mx-2">
+                                        Admin
+                                    </button>
+                                </Link>
+                            )}
 
                             <div className="userContainer d-flex flex-row align-items-center ">
                                 <Link to="/cart" onClick={() => window.scrollTo({ top: 0 })}>
@@ -75,7 +81,6 @@ const Navbar = () => {
                                         </button>
                                     </OverlayTrigger>
                                 </Link>
-
 
 
                                 {/* <Link to={!isAdmin ? "/adminlogin" : "/admin"} className="nav-link profileIcon" role="button">
@@ -93,7 +98,7 @@ const Navbar = () => {
                                                     <li className="dropdown-item userDataStyle">{userData.user.name}</li>
                                                     <li className="dropdown-item userDataStyle">{userData.user.email}</li>
                                                     <li>
-                                                        <button className="dropdown-item mt-3" onClick={logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</button>
+                                                        <button className="dropdown-item mt-3" style={{ backgroundColor: "#a30000", color: 'white' }} onClick={logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</button>
                                                     </li>
                                                 </>
                                             ) : (

@@ -1,26 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Styles/productsStyle.css"
 // import product1 from '../../public/Images/product1.png'
 // import product2 from '../../public/Images/product2.png'
 import CardItem from './CardItem';
-import ProductModal from './ProductModel';
+// import ProductModal from './ProductModel';
+import { DataContext } from '../Context/DataContext';
 
 const products = (props) => {
     const { data, heading, subHeading } = props;
-
-    const [show, setShow] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-
-    const handleShow = (product) => {
-        setSelectedProduct(product);
-        setShow(true);
-    };
-
-    const handleClose = () => {
-        setShow(false);
-        setSelectedProduct(null);
-    };
-    
+    const { handleProductClick } = useContext(DataContext);
 
     return (
         <>
@@ -33,7 +21,7 @@ const products = (props) => {
 
                     <div className="row justify-content-center">
                         {data.map((card) => (
-                            <div key={card._id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex flex-column align-items-center my-3" onClick={() => handleShow(card)}>
+                            <div key={card._id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6 d-flex flex-column align-items-center my-3" onClick={() => handleProductClick(card._id)}>
                                 <CardItem card={card} />
                             </div>
                         ))}
@@ -41,10 +29,6 @@ const products = (props) => {
                     </div>
                 </div>
             </section>
-            {selectedProduct && (
-                <ProductModal show={show} handleClose={handleClose} product={selectedProduct} />
-            )}
-
         </>
     )
 }

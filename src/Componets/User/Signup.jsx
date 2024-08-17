@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import "../Styles/userStyle.css";
 import logo_t_sm from '../../../public/Images/logo-transparent-sm.png';
-import signupImg from '../../../public/Images/signup.jpg';
+import signupImg from '../../../public/Images/signup.webp';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -71,6 +71,7 @@ const Signup = () => {
                                                     className="form-control py-2"
                                                     autoComplete="name"
                                                     onChange={handleChange}
+                                                    required
                                                 />
                                             </div>
 
@@ -85,6 +86,7 @@ const Signup = () => {
                                                     className="form-control py-2"
                                                     autoComplete="email"
                                                     onChange={handleChange}
+                                                    required
                                                 />
                                             </div>
 
@@ -99,6 +101,7 @@ const Signup = () => {
                                                     className="form-control py-2"
                                                     autoComplete="new-password"
                                                     onChange={handleChange}
+                                                    required
                                                 />
                                             </div>
 
@@ -113,6 +116,7 @@ const Signup = () => {
                                                     className="form-control py-2"
                                                     autoComplete="new-password"
                                                     onChange={handleChange}
+                                                    required
                                                 />
                                             </div>
 

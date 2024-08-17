@@ -76,4 +76,4 @@ const RefundPolicy = () => {
     );
 };
 
-export default RefundPolicy;
+export default React.memo(RefundPolicy);

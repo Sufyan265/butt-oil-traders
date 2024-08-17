@@ -2,6 +2,9 @@
     background-color: #f8f9fa;
     font-family: 'Arial', sans-serif;
 } */
+ .cartPage {
+    min-height: 60vh;
+ }
 
  .cartPage .cart-header {
      text-align: center;

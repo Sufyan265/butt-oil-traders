@@ -1,36 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
-import "./Styles/productsStyle.css"
-// import product1 from '../../public/Images/product1.png'
-// import product2 from '../../public/Images/product2.png'
+import React, { useContext, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+import "./Styles/productsStyle.css";
 import CardItem from './CardItem';
-import ProductModal from './ProductModel';
-import ContextApi from '../Context/ContextApi';
 import { DataContext } from '../Context/DataContext';
 import Team from './Team';
-import { useLocation } from 'react-router-dom';
 
 const Shop = (props) => {
-    const { getProducts, products} = useContext(DataContext);
-    // console.log(products)
+    const { getProducts, products, handleProductClick } = useContext(DataContext);
 
     const { heading, subHeading } = props;
-
-    const [show, setShow] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-
-    const handleShow = (product) => {
-        setSelectedProduct(product);
-        setShow(true);
-    };
-
-    const handleClose = () => {
-        setShow(false);
-        setSelectedProduct(null);
-    };
 
     useEffect(() => {
         getProducts();
     }, []);
+
 
     return (
         <>
@@ -43,21 +26,17 @@ const Shop = (props) => {
 
                     <div className="row justify-content-center">
                         {products.map((card) => (
-                            <div key={card._id} className="col-xl-2 col-lg-3 col-md-3 col-sm-4 d-flex flex-column align-items-center my-3" onClick={() => handleShow(card)}>
+                            <div key={card._id} className="col-xl-2 col-lg-3 col-md-3 col-sm-4 d-flex flex-column align-items-center my-3" onClick={() => handleProductClick(card._id)}>
                                 <CardItem card={card} />
                             </div>
                         ))}
-
                     </div>
                 </div>
             </section>
-            {selectedProduct && (
-                <ProductModal show={show} handleClose={handleClose} product={selectedProduct} />
-            )}
 
             <Team />
         </>
-    )
-}
+    );
+};
 
-export default Shop
+export default Shop;
