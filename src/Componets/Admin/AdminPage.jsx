@@ -1,22 +1,19 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Form, Button, Card, Col, Row, Modal, Alert } from 'react-bootstrap';
 import { DataContext } from '../../Context/DataContext';
-// import '../Styles/adminStyle.css';
-// import { useNavigate } from 'react-router-dom';
+import { AdminContext } from '../../Context/AdminContext';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import CardItem from '../CardItem';
-
-const initialProduct = { id: '', img: '', title: '', description: '', category: '', price: '' };
+import Loading from '../Loading';
+const initialProduct = { _id: '', img: '', title: '', description: '', category: '', price: '', isBestSelling: false, isPopular: false };
 
 const AdminPage = () => {
-    const { products, setProducts, getProducts, bestProducts, populerProducts } = useContext(DataContext); // Use Context API
+    const { products, getProducts, bestProducts, populerProducts } = useContext(DataContext);
+    const { addProducts, updateProduct, deleteProduct } = useContext(AdminContext);
     const [product, setProduct] = useState(initialProduct);
-    // const [products, setProducts] = useState(products || []);
     const [imagePreview, setImagePreview] = useState('');
     const [error, setError] = useState('');
     const [showModal, setShowModal] = useState(false);
-
 
     useEffect(() => {
         getProducts();
@@ -24,54 +21,50 @@ const AdminPage = () => {
         populerProducts();
     }, []);
 
-
-
-    // const navigate = useNavigate();
-
-    // const handleLogout = () => {
-    //     localStorage.removeItem('isAdmin');
-    //     localStorage.removeItem('adminUsername');
-    //     localStorage.removeItem('adminPassword');
-    //     navigate('/adminlogin');
-    // };
-
-    // useEffect(() => {
-    //     setProducts(products);
-    // }, [products]);
-
-    // const handleInputChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setProduct((prev) => ({ ...prev, [name]: value }));
-    // };
-
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result);
-                setProduct((prev) => ({ ...prev, img: reader.result }));
+                setProduct((prev) => ({ ...prev, img: file }));
             };
             reader.readAsDataURL(file);
         }
     };
 
-    const handleAddProduct = (e) => {
+    const handleAddProduct = async (e) => {
         e.preventDefault();
-
-        if (product._id && product.title && product.price) {
-            const updatedProducts = existingProduct
-                ? products.map((p) => (p._id === product._id ? product : p))
-                : [...products, product];
-
-            // setProducts(updatedProducts);
-            setProducts(updatedProducts); // Update Context API
-            setProduct(initialProduct);
-            setImagePreview('');
-            setError('');
-            setShowModal(false); // Close modal
+        
+        if (product.title && product.price) {
+            const formData = new FormData();
+            formData.append('title', product.title);
+            formData.append('description', product.description);
+            formData.append('category', product.category);
+            formData.append('price', product.price);
+            formData.append('isBestSelling', product.isBestSelling);
+            formData.append('isPopular', product.isPopular);
+            formData.append('image', product.img);
+            
+    
+            try {
+                if (product._id) {
+                    await updateProduct(product._id, formData);
+                } else {
+                    await addProducts(formData);
+                }
+                setProduct(initialProduct);
+                setImagePreview('');
+                setError('');
+                setShowModal(false);
+            } catch (err) {
+                setError('Failed to save product.');
+            }
+        } else {
+            setError('Title and Price are required.');
         }
     };
+
 
     const handleEditProduct = (id) => {
         const prod = products.find((p) => p._id === id);
@@ -81,10 +74,8 @@ const AdminPage = () => {
         setShowModal(true);
     };
 
-    const handleRemoveProduct = (id) => {
-        const updatedProducts = products.filter((p) => p._id !== id);
-        // setProducts(updatedProducts);
-        setProducts(updatedProducts); // Update Context API
+    const handleRemoveProduct = async (id) => {
+        await deleteProduct(id);
     };
 
     const handleShowModal = () => {
@@ -105,7 +96,6 @@ const AdminPage = () => {
         <div className="container mt-5">
             <div className="w-100 d-flex justify-content-between mb-4 align-items-center">
                 <h1>Admin Dashboard</h1>
-                {/* <Button variant="outline-dark" onClick={handleLogout}>Logout →</Button> */}
             </div>
 
             <Button variant="dark" className="mb-4 btnStyle" onClick={handleShowModal}>
@@ -114,7 +104,6 @@ const AdminPage = () => {
 
             <Row>
                 {products.length > 0 ? (
-                    // <>
                     products.map((p) => (
                         <Col key={p._id} lg={3} md={4} sm={6} xs={12} className="mb-4">
                             <Card>
@@ -146,7 +135,7 @@ const AdminPage = () => {
                         </Col>
                     ))
                 ) : (
-                    <p>No products available</p>
+                    <Loading height="70vh" size="30"/>
                 )}
             </Row>
 
@@ -163,7 +152,6 @@ const AdminPage = () => {
                                 type="text"
                                 name="id"
                                 value={product._id}
-                                onChange={handleInputChange}
                                 placeholder="ID will add automatically"
                                 readOnly
                             />
@@ -174,7 +162,6 @@ const AdminPage = () => {
                                 type="file"
                                 accept="image/*"
                                 onChange={handleImageChange}
-                                // required
                             />
                             {imagePreview && (
                                 <img
@@ -190,7 +177,7 @@ const AdminPage = () => {
                                 type="text"
                                 name="title"
                                 value={product.title}
-                                onChange={handleInputChange}
+                                onChange={(e) => setProduct({ ...product, title: e.target.value })}
                                 placeholder="Product Title"
                                 required
                             />
@@ -201,7 +188,7 @@ const AdminPage = () => {
                                 as="textarea"
                                 name="description"
                                 value={product.description}
-                                onChange={handleInputChange}
+                                onChange={(e) => setProduct({ ...product, description: e.target.value })}
                                 placeholder="Product Description"
                                 required
                             />
@@ -212,7 +199,7 @@ const AdminPage = () => {
                                 type="text"
                                 name="category"
                                 value={product.category}
-                                onChange={handleInputChange}
+                                onChange={(e) => setProduct({ ...product, category: e.target.value })}
                                 placeholder="Product Category"
                                 required
                             />
@@ -223,9 +210,27 @@ const AdminPage = () => {
                                 type="number"
                                 name="price"
                                 value={product.price}
-                                onChange={handleInputChange}
+                                onChange={(e) => setProduct({ ...product, price: e.target.value })}
                                 placeholder="Product Price"
                                 required
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Check
+                                type="checkbox"
+                                label="Best Selling"
+                                name="isBestSelling"
+                                checked={product.isBestSelling}
+                                onChange={(e) => setProduct({ ...product, isBestSelling: e.target.checked })}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Check
+                                type="checkbox"
+                                label="Popular"
+                                name="isPopular"
+                                checked={product.isPopular}
+                                onChange={(e) => setProduct({ ...product, isPopular: e.target.checked })}
                             />
                         </Form.Group>
                         <Button variant="dark" type="submit" className='btnStyle'>

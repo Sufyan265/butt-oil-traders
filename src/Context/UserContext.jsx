@@ -41,9 +41,9 @@ export const UserProvider = (props) => {
 
     // _____________________________________________________
     const { showAlert } = props;
-    
+
     const [paswwordError, setPaswwordError] = useState(false);
-    
+
     // Sign Up user ↓
     const signup = async (credentials) => {
         // API Call ↓
@@ -84,6 +84,7 @@ export const UserProvider = (props) => {
 
     // _____________________________________________________
 
+    const adminBtn = document.getElementById("admin_btn")
     const navigate = useNavigate();
     // Login user ↓
     const login = async (credentials) => {
@@ -103,6 +104,9 @@ export const UserProvider = (props) => {
                 // Save the auth token and redirect ↓ 
                 localStorage.setItem("token", user.authToken)
                 navigate("/")
+                if (adminBtn) {
+                    adminBtn.style.display = "inline-block";
+                }
                 showAlert("success", "Logged in successfully");
             } else {
                 // console.log(user)
@@ -147,6 +151,9 @@ export const UserProvider = (props) => {
 
     const logout = () => {
         localStorage.removeItem("token");
+        if (adminBtn) {
+            adminBtn.style.display = "none";
+        }
         navigate("/login");
     }
 

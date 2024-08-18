@@ -1,0 +1,35 @@
+.carousel-container {
+    padding: 0 10px;
+}
+
+.carousel-item {
+    padding: 10px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.custom-dot-list {
+    bottom: 10px;
+    position: absolute;
+    width: 100%;
+}
+
+.custom-dot-list li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.custom-dot-list li button {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-dot-list li.slick-active button {
+    background-color: white;
+}

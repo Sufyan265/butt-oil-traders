@@ -8,6 +8,8 @@ import PopularOil from './PopularOil';
 import Team from './Team';
 import Testimonials from './Testimonials';
 import Hero from './Hero';
+import Carousel from './Carousel';
+
 // import Loading from './Loading';
 
 // Lazy load the components
@@ -36,6 +38,7 @@ const Home = () => {
             <Products data={filtersData} heading="Car Filters" subHeading="Trending Now" />
             {/* </Suspense> */}
             <Testimonials />
+            <Carousel />
             <PopularOil />
             <Team />
         </>

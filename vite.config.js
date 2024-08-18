@@ -5,6 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/butt-oil-traders',
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': '/src', // Adjust this alias to your project structure
+    },
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets'

@@ -129,61 +129,57 @@ const ProductPage = () => {
                             <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
                                 <li className="nav-item d-flex" role="presentation">
                                     <a className="nav-link d-flex align-items-center justify-content-center w-100 active" id="ex1-tab-1" data-mdb-toggle="pill" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1" aria-selected="true">
-                                        Specification
+                                        Specifications
                                     </a>
                                 </li>
                                 <li className="nav-item d-flex" role="presentation">
                                     <a className="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-2" data-mdb-toggle="pill" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">
-                                        Warranty info
+                                        Warranty Information
                                     </a>
                                 </li>
                                 <li className="nav-item d-flex" role="presentation">
                                     <a className="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-3" data-mdb-toggle="pill" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3" aria-selected="false">
-                                        Shipping info
+                                        Shipping Information
                                     </a>
                                 </li>
                                 <li className="nav-item d-flex" role="presentation">
                                     <a className="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-4" data-mdb-toggle="pill" href="#ex1-pills-4" role="tab" aria-controls="ex1-pills-4" aria-selected="false">
-                                        Seller profile
+                                        Seller Profile
                                     </a>
                                 </li>
                             </ul>
                             <div className="tab-content" id="ex1-content">
                                 <div className="tab-pane fade show active" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
                                     <p>
-                                        With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor sit amet,
-                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                        nulla pariatur.
+                                        Discover the unparalleled quality and performance of our products. Designed to meet the rigorous demands of modern vehicles, each item is crafted with precision to ensure optimal engine performance and longevity.
                                     </p>
                                     <div className="row mb-2">
                                         <div className="col-12 col-md-6">
                                             <ul className="list-unstyled mb-0">
                                                 <li>
-                                                    <i className="fas fa-check text-success me-2"></i>Some great feature name here
+                                                    <i className="fas fa-check text-success me-2"></i> High-performance formula
                                                 </li>
                                                 <li>
-                                                    <i className="fas fa-check text-success me-2"></i>Lorem ipsum dolor sit amet, consectetur
+                                                    <i className="fas fa-check text-success me-2"></i> Superior engine protection
                                                 </li>
                                                 <li>
-                                                    <i className="fas fa-check text-success me-2"></i>Duis aute irure dolor in reprehenderit
+                                                    <i className="fas fa-check text-success me-2"></i> Advanced anti-wear technology
                                                 </li>
                                                 <li>
-                                                    <i className="fas fa-check text-success me-2"></i>Optical heart sensor
+                                                    <i className="fas fa-check text-success me-2"></i> Enhanced fuel efficiency
                                                 </li>
                                             </ul>
                                         </div>
                                         <div className="col-12 col-md-6 mb-0">
                                             <ul className="list-unstyled">
                                                 <li>
-                                                    <i className="fas fa-check text-success me-2"></i>Easy fast and ver good
+                                                    <i className="fas fa-check text-success me-2"></i> Exceptional thermal stability
                                                 </li>
                                                 <li>
-                                                    <i className="fas fa-check text-success me-2"></i>Some great feature name here
+                                                    <i className="fas fa-check text-success me-2"></i> Long-lasting engine cleanliness
                                                 </li>
                                                 <li>
-                                                    <i className="fas fa-check text-success me-2"></i>Modern style and design
+                                                    <i className="fas fa-check text-success me-2"></i> Compatible with all modern vehicles
                                                 </li>
                                             </ul>
                                         </div>
@@ -191,61 +187,85 @@ const ProductPage = () => {
                                     <table className="table border mt-3 mb-2">
                                         <tbody>
                                             <tr>
-                                                <th className="py-2">Display:</th>
-                                                <td className="py-2">13.3-inch LED-backlit display with IPS</td>
+                                                <th className="py-2">Viscosity:</th>
+                                                <td className="py-2">SAE 5W-30</td>
                                             </tr>
                                             <tr>
-                                                <th className="py-2">Processor capacity:</th>
-                                                <td className="py-2">2.3GHz dual-core Intel Core i5</td>
+                                                <th className="py-2">Performance Level:</th>
+                                                <td className="py-2">API SN/CF</td>
                                             </tr>
                                             <tr>
-                                                <th className="py-2">Camera quality:</th>
-                                                <td className="py-2">720p FaceTime HD camera</td>
+                                                <th className="py-2">Package Size:</th>
+                                                <td className="py-2">1L, 4L, 5L</td>
                                             </tr>
                                             <tr>
-                                                <th className="py-2">Memory:</th>
-                                                <td className="py-2">8 GB RAM or 16 GB RAM</td>
+                                                <th className="py-2">Suitable Engines:</th>
+                                                <td className="py-2">Gasoline, Diesel</td>
                                             </tr>
                                             <tr>
-                                                <th className="py-2">Graphics:</th>
-                                                <td className="py-2">Intel Iris Plus Graphics 640</td>
+                                                <th className="py-2">Additives:</th>
+                                                <td className="py-2">Detergent, Dispersant</td>
                                             </tr>
                                         </tbody>
                                     </table>
-
                                 </div>
                                 <div className="tab-pane fade mb-2" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                                    Tab content or sample information now <br />
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    <p>
+                                        At Butt Oil Traders, we stand firmly behind the quality and durability of our products. Every product you purchase from us is covered by a comprehensive warranty that reflects our commitment to excellence and your satisfaction.
+                                    </p>
+                                    <p>
+                                        Our warranty coverage ensures that if you encounter any defects in material or workmanship, we will either replace the product or provide a full refund, subject to the terms outlined in our warranty policy. This warranty applies to all products used under normal conditions, and it covers a specific duration based on the type of product purchased.
+                                    </p>
+                                    <p>
+                                        For Engine Oils, Gear Oils, and other lubricants, our warranty guarantees performance and protection for a specified number of miles or months, whichever comes first. Should you notice any issues related to the product’s effectiveness, such as unusual engine noise or reduced performance, please contact us immediately for a detailed inspection.
+                                    </p>
+                                    <p>
+                                        We also offer extended warranty options for select products, providing additional peace of mind. This extended warranty can be purchased at the time of sale and offers continued coverage beyond the standard warranty period. For more details, please refer to the product packaging or contact our customer service team, who are always ready to assist you with any inquiries.
+                                    </p>
+                                    <p>
+                                        Remember, proper usage and maintenance of the products are crucial for maintaining warranty coverage. Please follow all instructions and guidelines provided with the product to ensure optimal performance and longevity. For more information on warranty claims, procedures, or terms, please visit our warranty information page or contact us directly.
+                                    </p>
                                 </div>
                                 <div className="tab-pane fade mb-2" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                                    Another tab content or sample information now <br />
-                                    Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt
-                                    mollit anim id est laborum.
+                                    <p>
+                                        At Butt Oil Traders, we understand the importance of timely and reliable delivery, ensuring that you receive your products in perfect condition and as quickly as possible. Our shipping process is designed to be efficient, transparent, and customer-focused, providing you with peace of mind from the moment you place your order until it arrives at your doorstep.
+                                    </p>
+                                    <p>
+                                        We partner with leading logistics providers to offer fast and secure shipping across the country. Orders are typically processed within 24 hours on business days, and you will receive a confirmation email with tracking information as soon as your order is dispatched. This allows you to monitor your shipment in real-time and stay informed about its expected delivery date.
+                                    </p>
+                                    <p>
+                                        We offer multiple shipping options to cater to your needs, including standard, expedited, and express delivery services. The shipping costs and estimated delivery times will vary based on your location and the chosen shipping method. Our website automatically calculates the most accurate shipping costs at checkout, ensuring complete transparency with no hidden fees.
+                                    </p>
+                                    <p>
+                                        For international customers, we provide worldwide shipping to most destinations. International orders may be subject to customs duties, taxes, and import fees, which are the responsibility of the buyer. We recommend checking with your local customs office for more information on potential additional charges.
+                                    </p>
+                                    <p>
+                                        In the unlikely event of shipping delays or issues, our customer service team is available to assist you. We work closely with our shipping partners to resolve any problems quickly and efficiently, ensuring that your experience with Butt Oil Traders is nothing short of excellent. For more details on our shipping policies, including returns and exchanges, please visit our shipping information page.
+                                    </p>
                                 </div>
                                 <div className="tab-pane fade mb-2" id="ex1-pills-4" role="tabpanel" aria-labelledby="ex1-tab-4">
-                                    Some other tab content or sample information now <br />
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia deserunt mollit anim id est laborum.
+                                    <p>
+                                        Butt Oil Traders is a leading name in the automotive industry, dedicated to providing high-quality lubricants and automotive products that meet the needs of our customers. Our journey began with a passion for innovation and a commitment to delivering exceptional products that enhance the performance and longevity of vehicles.
+                                    </p>
+                                    <p>
+                                        Over the years, we have built a reputation for reliability, integrity, and customer satisfaction. Our team of experts is continually researching and developing new products that push the boundaries of technology and performance. We believe in offering only the best to our customers, which is why we carefully select and rigorously test every product before it reaches the market.
+                                    </p>
+                                    <p>
+                                        At Butt Oil Traders, customer service is at the heart of everything we do. We are committed to providing an outstanding shopping experience, from browsing our extensive product range to receiving your order and beyond. Our knowledgeable and friendly customer support team is always ready to assist you with any questions or concerns, ensuring that your experience with us is smooth and hassle-free.
+                                    </p>
+                                    <p>
+                                        We also value the relationships we build with our customers and the trust they place in us. That’s why we strive to maintain the highest standards of transparency and professionalism in all our dealings. Whether you’re a first-time buyer or a long-time customer, you can count on Butt Oil Traders to deliver the products and service you need to keep your vehicle running at its best.
+                                    </p>
+                                    <p>
+                                        Learn more about our mission, values, and the team behind Butt Oil Traders on our profile page. We look forward to serving you and helping you achieve optimal performance for your vehicle with our top-quality products.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
         </>
     );
 };

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Styles/App.css"
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo_t_sm from '../../public/Images/logo-transparent-sm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -11,8 +11,6 @@ import { UserContext } from '../Context/UserContext';
 const Navbar = () => {
     const { totalItems } = useContext(ContextApi);
     const { userData, logout, getUser } = useContext(UserContext);
-
-    let location = useLocation();
 
     // const admintoken = import.meta.env.VITE_ADMIN_TOKEN;
 
@@ -66,7 +64,7 @@ const Navbar = () => {
 
                             {userData.user && userData.user.isAdmin && (
                                 <Link to="/admin" onClick={() => window.scrollTo({ top: 0 })}>
-                                    <button type="button" className="btn btn-outline-dark cart-btn mx-2">
+                                    <button type="button" className="btn btn-outline-dark cart-btn mx-2" id='admin_btn'>
                                         Admin
                                     </button>
                                 </Link>
