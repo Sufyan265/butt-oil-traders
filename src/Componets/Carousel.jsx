@@ -36,12 +36,12 @@ const MultiCarousel = () => {
 
     return (
         <div className="container ">
-            <div class="bestProdHeadings">
-                <h6 class="paragraphStyle subHeading">Discover Our</h6>
-                <h3 class="headingStyle">Top Brands</h3>
+            <div className="bestProdHeadings">
+                <h6 className="paragraphStyle subHeading">Discover Our</h6>
+                <h3 className="headingStyle">Top Brands</h3>
             </div>
             {/* <h3 className='headingStyle w-100 my-auto'>Top Brands</h3> */}
-            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000}>
+            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={1500}>
                 {items.map(item => (
                     <div key={item.id} style={{ padding: '10px' }}>
                         <img src={item.image} alt={item.title} style={{ maxWidth: '100%', borderRadius: '10px' }} />

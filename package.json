@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": " https://Sufyan265.github.io/butt-oil-traders",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

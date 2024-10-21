@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /checkout
-
-Allow: /
-
-Sitemap: https://Buttoiltraders.com/sitemap.xml

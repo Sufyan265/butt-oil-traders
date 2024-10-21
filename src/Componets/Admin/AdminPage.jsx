@@ -5,11 +5,14 @@ import { AdminContext } from '../../Context/AdminContext';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from '../Loading';
+import { UserContext } from '../../Context/UserContext';
+import { Navigate } from 'react-router-dom';
 const initialProduct = { _id: '', img: '', title: '', description: '', category: '', price: '', isBestSelling: false, isPopular: false };
 
 const AdminPage = () => {
     const { products, getProducts, bestProducts, populerProducts } = useContext(DataContext);
     const { addProducts, updateProduct, deleteProduct } = useContext(AdminContext);
+    const { userData } = useContext(UserContext);
     const [product, setProduct] = useState(initialProduct);
     const [imagePreview, setImagePreview] = useState('');
     const [error, setError] = useState('');
@@ -35,7 +38,7 @@ const AdminPage = () => {
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
-        
+
         if (product.title && product.price) {
             const formData = new FormData();
             formData.append('title', product.title);
@@ -45,8 +48,8 @@ const AdminPage = () => {
             formData.append('isBestSelling', product.isBestSelling);
             formData.append('isPopular', product.isPopular);
             formData.append('image', product.img);
-            
-    
+
+
             try {
                 if (product._id) {
                     await updateProduct(product._id, formData);
@@ -92,6 +95,12 @@ const AdminPage = () => {
         setError('');
     };
 
+    if (!userData || !userData.user.isAdmin) {
+        alert('You are not authorized to view this page.');
+        return <Navigate to="/login" />;
+    }
+
+
     return (
         <div className="container mt-5">
             <div className="w-100 d-flex justify-content-between mb-4 align-items-center">
@@ -135,7 +144,7 @@ const AdminPage = () => {
                         </Col>
                     ))
                 ) : (
-                    <Loading height="70vh" size="30"/>
+                    <Loading height="70vh" size="30" />
                 )}
             </Row>
 

@@ -68,7 +68,7 @@ const Signup = () => {
                                                     type="text"
                                                     id="formName"
                                                     name='name'
-                                                    className="form-control py-2"
+                                                    className="form-control py-2 border border-2"
                                                     autoComplete="name"
                                                     onChange={handleChange}
                                                     required
@@ -83,7 +83,7 @@ const Signup = () => {
                                                     type="email"
                                                     id="formEmail"
                                                     name='email'
-                                                    className="form-control py-2"
+                                                    className="form-control py-2 border border-2"
                                                     autoComplete="email"
                                                     onChange={handleChange}
                                                     required
@@ -98,7 +98,7 @@ const Signup = () => {
                                                     type="password"
                                                     id="formPassword"
                                                     name='password'
-                                                    className="form-control py-2"
+                                                    className="form-control py-2 border border-2"
                                                     autoComplete="new-password"
                                                     onChange={handleChange}
                                                     required
@@ -113,7 +113,7 @@ const Signup = () => {
                                                     type="password"
                                                     id="formConfirmPassword"
                                                     name='cPassword'
-                                                    className="form-control py-2"
+                                                    className="form-control py-2 border border-2"
                                                     autoComplete="new-password"
                                                     onChange={handleChange}
                                                     required

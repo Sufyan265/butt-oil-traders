@@ -76,7 +76,7 @@ export const UserProvider = (props) => {
                 showAlert("danger", user.error);
             }
         } catch (error) {
-            // console.log(error)e
+            console.error(error)
             catchError(error)
         }
     }
@@ -114,7 +114,7 @@ export const UserProvider = (props) => {
             }
 
         } catch (error) {
-            // console.log(error)
+            console.error(error)
             catchError(error)
         }
     }

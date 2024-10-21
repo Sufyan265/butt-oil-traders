@@ -26,7 +26,7 @@ const CheckOut = lazy(() => import('./Componets/CheckOut'));
 const Shop = lazy(() => import('./Componets/Shop'));
 const NotFound = lazy(() => import('./Componets/NotFound'));
 const AdminPage = lazy(() => import('./Componets/Admin/AdminPage'));
-const AdminLogin = lazy(() => import('./Componets/Admin/AdminLogin'));
+// const AdminLogin = lazy(() => import('./Componets/Admin/AdminLogin'));
 const Login = lazy(() => import('./Componets/User/Login'));
 const Signup = lazy(() => import('./Componets/User/Signup'));
 
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-      <Router basename="/butt-oil-traders">
+      <Router basename="/">
         <UserProvider showAlert={showAlert}>
           <DataProvider>
             <AdminProvider>
@@ -63,7 +63,7 @@ function App() {
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/contact" element={<Contact />} />
                         <Route exact path="/refundpolicy" element={<RefundPolicy />} />
-                        <Route path="/adminlogin" element={<AdminLogin />} />
+                        {/* <Route path="/adminlogin" element={<AdminLogin />} /> */}
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>} />
